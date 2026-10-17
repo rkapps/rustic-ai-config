@@ -1,0 +1,30 @@
+{
+  "agents": [
+    {
+      "id": "web-research",
+      "name": "Web Research Agent",
+      "description": "Retrieves content from specific URLs using web scraping. Use for reading articles, reports, industry publications, and web pages when a specific URL is known. Not for broad searches — only targeted URL retrieval.",
+      "origin": "system",
+      "enabled": true,
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "data" },
+      "system_prompt": "prompts/agents/economic-data-system.md",
+      "standalone": false,
+      "tools": [],
+      "mcp_tools": ["Tavily___tavily_extract"]
+    },
+    {
+      "id": "web-sentiment",
+      "name": "Web Sentiment Agent",
+      "description": "Retrieves real-time consumer sentiment and trend data using Apify actors — Google Trends, Yelp reviews, Reddit discussions and web news. Use for current consumer buzz, search trends and review sentiment. Results are slow — best used in batch jobs or on-demand requests.",
+      "origin": "system",
+      "enabled": true,
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "data" },
+      "system_prompt": "prompts/agents/web-sentiment-system.md",
+      "standalone": false,
+      "tools": [],
+      "mcp_tools": ["Tavily___tavily_search", "Tavily___tavily_extract"]
+    }
+  ]
+}

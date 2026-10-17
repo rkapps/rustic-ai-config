@@ -1,0 +1,151 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "fred_series": {
+      "type": "array",
+      "additionalProperties": false,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "series_id": { "type": "string" },
+          "category": { "type": "string" },
+          "name": { "type": "string" },
+          "observations": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "date": { "type": "string" },
+                "value": { "type": "string" }
+              },
+              "required": ["date", "value"]
+            }
+          }
+        },
+        "required": ["series_id", "category", "name", "observations"]
+      }
+    },
+    "census": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dataset": { "type": "string" },
+          "variable": { "type": "string" },
+          "description": { "type": "string" },
+          "geos": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "geo_type": { "type": "string" },
+                "geo_name": { "type": "string" },
+                "geo_fips": { "type": "string" },
+                "data": {
+                  "type": "array",
+                  "additionalProperties": false,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "year": { "type": "string" },
+                      "value": { "type": "string" }
+                    },
+                    "required": ["year", "value"]
+                  }
+                }
+              },
+              "required": ["geo_type", "geo_name", "geo_fips", "data"]
+            }
+          }
+        },
+        "required": ["dataset", "variable", "description", "geos"]
+      }
+    },
+    "bea_nipa": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "dataset": { "type": "string" },
+          "table_name": { "type": "string" },
+          "series": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": { "type": "string" },
+                "description": { "type": "string" },
+                "data": {
+                  "type": "array",
+                  "additionalProperties": false,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "year": { "type": "string" },
+                      "value": { "type": "string" }
+                    },
+                    "required": ["year", "value"]
+                  }
+                }
+              },
+              "required": ["code", "description", "data"]
+            }
+          }
+        },
+        "required": ["dataset", "table_name", "series"]
+      }
+    },
+    "bea_regional": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": { "type": "string" },
+          "description": { "type": "string" },
+          "geos": {
+            "type": "array",
+            "additionalProperties": false,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "geo_type": { "type": "string" },
+                "geo_name": { "type": "string" },
+                "geo_fips": { "type": "string" },
+                "data": {
+                  "type": "array",
+                  "additionalProperties": false,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "year": { "type": "string" },
+                      "value": { "type": "string" }
+                    },
+                    "required": ["year", "value"]
+                  }
+                }
+              },
+              "required": ["geo_type", "geo_name", "geo_fips", "data"]
+            }
+          }
+        },
+        "required": ["code", "description", "geos"]
+      }
+    }
+  },
+  "required": ["fred_series", "census", "bea_nipa", "bea_regional"]
+}

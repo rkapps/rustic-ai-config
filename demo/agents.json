@@ -1,0 +1,56 @@
+{
+  "agents": [
+    {
+      "id": "chat",
+      "name": "General Assistant",
+      "description": "You are a helpful, knowledgeable assistant.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "single_agent",
+      "llm_config": { "preset": "precise" },
+      "system_prompt": "prompts/agents/chat-system.md",
+      "standalone": false,
+      "tools": [],
+      "conversation": {
+        "default_strategy": "stateful",
+        "allowed_strategies": ["stateful"]
+      }
+    },
+    {
+      "id": "consumer-trend",
+      "name": "Consumer Trend Analyst Agent",
+      "description": "Orchestrates multi-layer consumer intelligence research combining macro-economic data, financial market signals, and web research. Answers business questions about market expansion, regional performance, consumer trends, and competitive positioning by coordinating specialist agents across economic, financial, and web data sources.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline",
+      "llm_config": { "preset": "precise" },
+      "system_prompt": "prompts/agents/consumer-trend-system.md",
+      "standalone": true,
+      "tools": [],
+      "pipeline": {
+        "type": "deterministic",
+        "available_agents": [],
+        "stages": [
+          { "name": "data_gathering", "parallel": true, "sub_agents": [{ "id": "economic-data" }, { "id": "finance-data" }, { "id": "web-research" }, { "id": "web-sentiment" }] },
+          { "name": "synthesize", "parallel": false, "sub_agents": [{ "id": "consumer-trend-synthesizer" }] }
+        ]
+      },
+      "conversation": {
+        "default_strategy": "stateful",
+        "allowed_strategies": ["stateless", "stateful"]
+      }
+    },
+    {
+      "id": "consumer-trend-synthesizer",
+      "name": "Consumer Trend Synthesizer Agent",
+      "description": "Synthesises macro-economic, demographic, market proxy and web research data into actionable consumer intelligence for business owners. Produces clear insights with regional context and strategic recommendations.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "thorough" },
+      "system_prompt": "prompts/agents/consumer-trend-synthesizer-system.md",
+      "standalone": false,
+      "tools": []
+    }
+  ]
+}

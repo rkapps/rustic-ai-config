@@ -1,0 +1,49 @@
+{
+  "agents": [
+    {
+      "id": "economic-data",
+      "name": "Economic Data Agent",
+      "description": "Retrieves and synthesises macro-economic data from government sources — Federal Reserve (FRED), Bureau of Economic Analysis (BEA), and U.S. Census Bureau. Provides national and regional context on consumer spending, income, demographics, housing, and employment. Use for macro-level trend analysis, regional comparisons, and economic benchmarking.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline",
+      "llm_config": { "preset": "data" },
+      "system_prompt": "prompts/agents/economic-data-system.md",
+      "standalone": false,
+      "tools": [],
+      "pipeline": {
+        "type": "deterministic",
+        "available_agents": [],
+        "stages": [
+          { "name": "economic-taxonomy", "parallel": false, "sub_agents": [{ "id": "economic-taxonomy", "relay_tool_output": true }] },
+          { "name": "economic_info", "parallel": false, "sub_agents": [{ "id": "economic-info", "relay_tool_output": true }] }
+        ]
+      }
+    },
+    {
+      "id": "economic-taxonomy",
+      "name": "Economic Taxonomy Agent",
+      "description": "Retrieves the taxonomy of the economic data",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "balanced" },
+      "system_prompt": "prompts/agents/economic-taxonomy-system.md",
+      "standalone": false,
+      "tools": ["economic_taxonomy"]
+    },
+    {
+      "id": "economic-info",
+      "name": "Economic Info Agent",
+      "description": "Retrieves and synthesises macro-economic data from government sources — Federal Reserve (FRED), Bureau of Economic Analysis (BEA), and U.S. Census Bureau. Provides national and regional context on consumer spending, income, demographics, housing, and employment. Use for macro-level trend analysis, regional comparisons, and economic benchmarking.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "data" },
+      "system_prompt": "prompts/agents/economic-info-system.md",
+      "response_format_schema_path": "schemas/economic-info-response-schema.json",
+      "standalone": false,
+      "tools": ["fred_series", "bea_nipa_data", "bea_regional_data", "census_data"]
+    }
+  ]
+}

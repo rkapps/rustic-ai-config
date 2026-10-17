@@ -1,0 +1,16 @@
+{
+  "agents": [
+    {
+      "id": "projects-data",
+      "name": "Projects Data Agent",
+      "description": "Search across projects for information contained in documents. Uses semantic search",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "data" },
+      "system_prompt": "prompts/projects-data-system.md",
+      "standalone": false,
+      "tools": ["projects_list", "project_list_files", "project_search", "project_read_file"]
+    }
+  ]
+}

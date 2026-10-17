@@ -1,0 +1,170 @@
+{
+  "type": "object",
+  "properties": {
+    "snapshots": {
+      "type": "array",
+      "description": "A collection of ticker snapshots",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "symbol": { "type": "string" },
+          "name": { "type": "string" },
+          "sector": { "type": "string" },
+          "industry": { "type": "string" },
+          "last": { "type": "number" },
+          "prev": { "type": "number" },
+          "open": { "type": "number" },
+          "high": { "type": "number" },
+          "low": { "type": "number" },
+          "change_amt": { "type": "number" },
+          "change_perc": { "type": "number" },
+          "wk52_high": { "type": "number" },
+          "wk52_low": { "type": "number" },
+          "total_assets": { "type": "number" },
+          "eps": { "type": "number" },
+          "pe_ratio": { "type": "number" },
+          "peg_ratio": { "type": "number" },
+          "pb_ratio": { "type": "number" },
+          "ps_ratio": { "type": "number" },
+          "forward_pe": { "type": "number" },
+          "beta": { "type": "number" },
+          "analyst_target_price": { "type": "number" },
+          "analyst_consensus": { "type": "number" }
+        },
+        "required": ["symbol", "name", "sector", "industry", "last", "prev", "open", "high", "low", "change_amt", "change_perc", "wk52_high", "wk52_low", "total_assets", "eps", "pe_ratio", "peg_ratio", "pb_ratio", "ps_ratio", "forward_pe", "beta", "analyst_target_price", "analyst_consensus"]
+      }
+    },
+    "performances": {
+      "type": "array",
+      "description": "A collection of ticker snapshots",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "symbol": { "type": "string" },
+          "diffs": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "1W": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "perc": { "type": "number" },
+                  "price": { "type": "number" }
+                },
+                "required": ["perc", "price"]
+              },
+              "1M": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "perc": { "type": "number" },
+                  "price": { "type": "number" }
+                },
+                "required": ["perc", "price"]
+              },
+              "3M": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "perc": { "type": "number" },
+                  "price": { "type": "number" }
+                },
+                "required": ["perc", "price"]
+              },
+              "6M": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "perc": { "type": "number" },
+                  "price": { "type": "number" }
+                },
+                "required": ["perc", "price"]
+              },
+              "Ytd": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "perc": { "type": "number" },
+                  "price": { "type": "number" }
+                },
+                "required": ["perc", "price"]
+              },
+              "1Y": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "perc": { "type": "number" },
+                  "price": { "type": "number" }
+                },
+                "required": ["perc", "price"]
+              },
+              "2Y": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "perc": { "type": "number" },
+                  "price": { "type": "number" }
+                },
+                "required": ["perc", "price"]
+              },
+              "5Y": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "perc": { "type": "number" },
+                  "price": { "type": "number" }
+                },
+                "required": ["perc", "price"]
+              }
+            },
+            "required": ["1W", "1M", "3M", "6M", "Ytd", "1Y", "2Y", "5Y"]
+          }
+        },
+        "required": ["symbol", "diffs"]
+      }
+    },
+    "indicators": {
+      "type": "array",
+      "description": "A collection of ticker technical indicators",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "symbol": { "type": "string" },
+          "rsi_14": { "type": "number" },
+          "sma_50": { "type": "number" },
+          "sma_200": { "type": "number" },
+          "macd": { "type": "number" },
+          "macd_signal": { "type": "number" },
+          "bb_upper": { "type": "number" },
+          "bb_lower": { "type": "number" }
+        },
+        "required": ["symbol", "rsi_14", "sma_50", "sma_200", "macd", "macd_signal", "bb_upper", "bb_lower"]
+      }
+    },
+    "sentiments": {
+      "type": "array",
+      "description": "A collection of sentiments",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "symbol": { "type": "string" },
+          "date": { "type": "string" },
+          "title": { "type": "string" },
+          "label": { "type": "string" },
+          "source": { "type": "string" },
+          "score": { "type": "number" },
+          "similarity": { "type": "number" }
+        },
+        "required": ["id", "symbol", "date", "title", "label", "source", "score", "similarity"]
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["snapshots", "performances", "indicators", "sentiments"]
+}

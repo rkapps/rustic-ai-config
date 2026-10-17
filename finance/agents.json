@@ -1,0 +1,85 @@
+{
+  "agents": [
+    {
+      "id": "finance-analyser",
+      "name": "Finance Analyser Agent",
+      "description": "Analyses stocks, tickers, ML signals and portfolios.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline",
+      "llm_config": { "preset": "precise" },
+      "system_prompt": "prompts/agents/finance-analyser-system.md",
+      "standalone": true,
+      "tools": [],
+      "pipeline": {
+        "type": "deterministic",
+        "available_agents": [],
+        "stages": [
+          { "name": "fetch-data", "parallel": false, "sub_agents": [{ "id": "finance-data", "relay_tool_output": true }] },
+          { "name": "synthesize", "parallel": false, "sub_agents": [{ "id": "finance-synthesizer" }] }
+        ]
+      },
+      "conversation": {
+        "default_strategy": "stateful",
+        "allowed_strategies": ["stateless", "stateful"]
+      }
+    },
+    {
+      "id": "finance-data",
+      "name": "Finance Data Agent",
+      "description": "Returns finance data stocks, tickers, ML signals and portfolios.",
+      "enabled": true,
+      "origin": "system",
+      "llm_config": { "preset": "data" },
+      "execution": "pipeline",
+      "system_prompt": "prompts/agents/finance-data-system.md",
+      "standalone": false,
+      "tools": [],
+      "pipeline": {
+        "type": "deterministic",
+        "available_agents": [],
+        "stages": [
+          { "name": "ticker_resolver", "parallel": false, "sub_agents": [{ "id": "finance-ticker-resolver" }] },
+          { "name": "ticker_info", "parallel": false, "sub_agents": [{ "id": "finance-ticker-info", "relay_tool_output": true }] }
+        ]
+      }
+    },
+    {
+      "id": "finance-ticker-resolver",
+      "name": "Finance Ticker Resolver Agent",
+      "description": "Returns a list of tickers based on the user prompt",
+      "enabled": true,
+      "origin": "system",
+      "llm_config": { "preset": "balanced" },
+      "execution": "pipeline_agent",
+      "system_prompt": "prompts/agents/finance-ticker-resolver-system.md",
+      "standalone": false,
+      "tools": ["ticker_taxonomy", "ticker_peers", "ticker_screening"]
+    },
+    {
+      "id": "finance-ticker-info",
+      "name": "Finance Ticker Info Agent",
+      "description": "Returns ticker information like snapshots, performance, indicators and sentiments",
+      "enabled": true,
+      "origin": "system",
+      "llm_config": { "preset": "data" },
+      "execution": "pipeline_agent",
+      "system_prompt": "prompts/agents/finance-ticker-info-system.md",
+      "response_format_schema_path": "schemas/finance-ticker-info-response-schema.json",
+      "standalone": false,
+      "tools": ["ticker_indicator", "ticker_performance", "ticker_sentiment", "ticker_snapshot"]
+    },
+    {
+      "id": "finance-synthesizer",
+      "name": "Finance Synthesizer Agent",
+      "description": "Synthesises macro-economic, demographic, market proxy and web research data into actionable consumer intelligence for business owners. Produces clear insights with regional context and strategic recommendations.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "thorough" },
+      "system_prompt": "prompts/agents/finance-synthesizer-system.md",
+      "standalone": false,
+      "tools": []
+    }
+  ]
+}
