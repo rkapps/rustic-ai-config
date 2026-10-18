@@ -8,7 +8,7 @@
       "origin": "system",
       "execution": "single_agent",
       "llm_config": { "preset": "precise" },
-      "system_prompt": "prompts/agents/chat-system.md",
+      "system_prompt": "prompts/chat-system.md",
       "standalone": false,
       "tools": [],
       "conversation": {
@@ -24,7 +24,7 @@
       "origin": "system",
       "execution": "pipeline",
       "llm_config": { "preset": "precise" },
-      "system_prompt": "prompts/agents/consumer-trend-system.md",
+      "system_prompt": "prompts/consumer-trend-system.md",
       "standalone": true,
       "tools": [],
       "pipeline": {
@@ -48,7 +48,7 @@
       "origin": "system",
       "execution": "pipeline_agent",
       "llm_config": { "preset": "thorough" },
-      "system_prompt": "prompts/agents/consumer-trend-synthesizer-system.md",
+      "system_prompt": "prompts/consumer-trend-synthesizer-system.md",
       "standalone": false,
       "tools": []
     }

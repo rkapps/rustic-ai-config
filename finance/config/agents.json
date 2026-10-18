@@ -8,7 +8,7 @@
       "origin": "system",
       "execution": "pipeline",
       "llm_config": { "preset": "precise" },
-      "system_prompt": "prompts/agents/finance-analyser-system.md",
+      "system_prompt": "prompts/finance-analyser-system.md",
       "standalone": true,
       "tools": [],
       "pipeline": {
@@ -32,7 +32,7 @@
       "origin": "system",
       "llm_config": { "preset": "data" },
       "execution": "pipeline",
-      "system_prompt": "prompts/agents/finance-data-system.md",
+      "system_prompt": "prompts/finance-data-system.md",
       "standalone": false,
       "tools": [],
       "pipeline": {
@@ -52,7 +52,7 @@
       "origin": "system",
       "llm_config": { "preset": "balanced" },
       "execution": "pipeline_agent",
-      "system_prompt": "prompts/agents/finance-ticker-resolver-system.md",
+      "system_prompt": "prompts/finance-ticker-resolver-system.md",
       "standalone": false,
       "tools": ["ticker_taxonomy", "ticker_peers", "ticker_screening"]
     },
@@ -64,7 +64,7 @@
       "origin": "system",
       "llm_config": { "preset": "data" },
       "execution": "pipeline_agent",
-      "system_prompt": "prompts/agents/finance-ticker-info-system.md",
+      "system_prompt": "prompts/finance-ticker-info-system.md",
       "response_format_schema_path": "schemas/finance-ticker-info-response-schema.json",
       "standalone": false,
       "tools": ["ticker_indicator", "ticker_performance", "ticker_sentiment", "ticker_snapshot"]
@@ -77,7 +77,7 @@
       "origin": "system",
       "execution": "pipeline_agent",
       "llm_config": { "preset": "thorough" },
-      "system_prompt": "prompts/agents/finance-synthesizer-system.md",
+      "system_prompt": "prompts/finance-synthesizer-system.md",
       "standalone": false,
       "tools": []
     }

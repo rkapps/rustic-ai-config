@@ -8,7 +8,7 @@
       "origin": "system",
       "execution": "pipeline",
       "llm_config": { "preset": "data" },
-      "system_prompt": "prompts/agents/economic-data-system.md",
+      "system_prompt": "prompts/economic-data-system.md",
       "standalone": false,
       "tools": [],
       "pipeline": {
@@ -28,7 +28,7 @@
       "origin": "system",
       "execution": "pipeline_agent",
       "llm_config": { "preset": "balanced" },
-      "system_prompt": "prompts/agents/economic-taxonomy-system.md",
+      "system_prompt": "prompts/economic-taxonomy-system.md",
       "standalone": false,
       "tools": ["economic_taxonomy"]
     },
@@ -40,7 +40,7 @@
       "origin": "system",
       "execution": "pipeline_agent",
       "llm_config": { "preset": "data" },
-      "system_prompt": "prompts/agents/economic-info-system.md",
+      "system_prompt": "prompts/economic-info-system.md",
       "response_format_schema_path": "schemas/economic-info-response-schema.json",
       "standalone": false,
       "tools": ["fred_series", "bea_nipa_data", "bea_regional_data", "census_data"]

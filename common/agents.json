@@ -8,7 +8,7 @@
       "enabled": true,
       "execution": "pipeline_agent",
       "llm_config": { "preset": "data" },
-      "system_prompt": "prompts/agents/economic-data-system.md",
+      "system_prompt": "prompts/economic-data-system.md",
       "standalone": false,
       "tools": [],
       "mcp_tools": ["Tavily___tavily_extract"]
@@ -21,7 +21,7 @@
       "enabled": true,
       "execution": "pipeline_agent",
       "llm_config": { "preset": "data" },
-      "system_prompt": "prompts/agents/web-sentiment-system.md",
+      "system_prompt": "prompts/web-sentiment-system.md",
       "standalone": false,
       "tools": [],
       "mcp_tools": ["Tavily___tavily_search", "Tavily___tavily_extract"]
