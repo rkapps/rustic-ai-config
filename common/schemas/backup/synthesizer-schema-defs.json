@@ -1,0 +1,869 @@
+{
+  "additionalProperties": false,
+  "description": "A complete report: a title plus an ordered list of sections.",
+  "properties": {
+    "sections": {
+      "description": "Sections in display order.",
+      "items": {
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "description": "A short narrative paragraph. Supports **bold** markup only.",
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["context"],
+                "type": "string"
+              }
+            },
+            "required": ["content", "group", "title", "type"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "A row of headline numbers.",
+            "properties": {
+              "data": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "benchmark": {
+                      "description": "Comparison text, e.g. \"$114.47 target\" or \"vs BA 833x\".",
+                      "type": ["string", "null"]
+                    },
+                    "change": {
+                      "description": "Change as a number, formatted with `change_format` (default: percent change).",
+                      "type": ["number", "null"]
+                    },
+                    "change_format": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "description": "Plain number, up to 3 decimals.",
+                              "enum": ["number"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "Whole number with thousands separators.",
+                              "enum": ["integer"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "Money, 2 decimals, with the currency symbol.",
+                              "enum": ["currency"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "A level, e.g. a rate of 4.1%.",
+                              "enum": ["percent"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "A change, always signed, e.g. +7.83% or -2.4%.",
+                              "enum": ["percent_change"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "A multiple, e.g. a P/E of 19.16x.",
+                              "enum": ["multiple"],
+                              "type": "string"
+                            }
+                          ],
+                          "description": "How a number is displayed. Percent values are in percentage points:\n7.83 means 7.83%, not 783%."
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "format": {
+                      "anyOf": [
+                        {
+                          "anyOf": [
+                            {
+                              "description": "Plain number, up to 3 decimals.",
+                              "enum": ["number"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "Whole number with thousands separators.",
+                              "enum": ["integer"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "Money, 2 decimals, with the currency symbol.",
+                              "enum": ["currency"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "A level, e.g. a rate of 4.1%.",
+                              "enum": ["percent"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "A change, always signed, e.g. +7.83% or -2.4%.",
+                              "enum": ["percent_change"],
+                              "type": "string"
+                            },
+                            {
+                              "description": "A multiple, e.g. a P/E of 19.16x.",
+                              "enum": ["multiple"],
+                              "type": "string"
+                            }
+                          ],
+                          "description": "How a number is displayed. Percent values are in percentage points:\n7.83 means 7.83%, not 783%."
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "signal": {
+                      "anyOf": [
+                        {
+                          "description": "Direction or sentiment of a value.",
+                          "enum": ["up", "down", "neutral"],
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "value": {
+                      "anyOf": [
+                        {
+                          "type": "number"
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ],
+                      "description": "A cell value: a raw number (formatted by the renderer) or text."
+                    }
+                  },
+                  "required": ["benchmark", "change", "change_format", "format", "label", "signal", "value"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["metric_cards"],
+                "type": "string"
+              }
+            },
+            "required": ["data", "group", "title", "type"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "A table. Every row must have exactly `headers.len()` cells; the first\ncell of every row is its label.",
+            "properties": {
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "headers": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "rows": {
+                "items": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "format": {
+                        "anyOf": [
+                          {
+                            "anyOf": [
+                              {
+                                "description": "Plain number, up to 3 decimals.",
+                                "enum": ["number"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "Whole number with thousands separators.",
+                                "enum": ["integer"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "Money, 2 decimals, with the currency symbol.",
+                                "enum": ["currency"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "A level, e.g. a rate of 4.1%.",
+                                "enum": ["percent"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "A change, always signed, e.g. +7.83% or -2.4%.",
+                                "enum": ["percent_change"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "A multiple, e.g. a P/E of 19.16x.",
+                                "enum": ["multiple"],
+                                "type": "string"
+                              }
+                            ],
+                            "description": "How a number is displayed. Percent values are in percentage points:\n7.83 means 7.83%, not 783%."
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "indicator": {
+                        "anyOf": [
+                          {
+                            "description": "How a signal is drawn next to a value.",
+                            "enum": ["dot", "badge", "arrow"],
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "note": {
+                        "description": "Short annotation shown under or beside the value.",
+                        "type": ["string", "null"]
+                      },
+                      "signal": {
+                        "anyOf": [
+                          {
+                            "description": "Direction or sentiment of a value.",
+                            "enum": ["up", "down", "neutral"],
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "anyOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "description": "A cell value: a raw number (formatted by the renderer) or text."
+                      }
+                    },
+                    "required": ["format", "indicator", "note", "signal", "value"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "totals": {
+                "description": "Optional summary rows shown below the body, e.g. totals or averages.\nSame shape as `rows`. Empty when there is no meaningful aggregate.",
+                "items": {
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "format": {
+                        "anyOf": [
+                          {
+                            "anyOf": [
+                              {
+                                "description": "Plain number, up to 3 decimals.",
+                                "enum": ["number"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "Whole number with thousands separators.",
+                                "enum": ["integer"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "Money, 2 decimals, with the currency symbol.",
+                                "enum": ["currency"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "A level, e.g. a rate of 4.1%.",
+                                "enum": ["percent"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "A change, always signed, e.g. +7.83% or -2.4%.",
+                                "enum": ["percent_change"],
+                                "type": "string"
+                              },
+                              {
+                                "description": "A multiple, e.g. a P/E of 19.16x.",
+                                "enum": ["multiple"],
+                                "type": "string"
+                              }
+                            ],
+                            "description": "How a number is displayed. Percent values are in percentage points:\n7.83 means 7.83%, not 783%."
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "indicator": {
+                        "anyOf": [
+                          {
+                            "description": "How a signal is drawn next to a value.",
+                            "enum": ["dot", "badge", "arrow"],
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "note": {
+                        "description": "Short annotation shown under or beside the value.",
+                        "type": ["string", "null"]
+                      },
+                      "signal": {
+                        "anyOf": [
+                          {
+                            "description": "Direction or sentiment of a value.",
+                            "enum": ["up", "down", "neutral"],
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      },
+                      "value": {
+                        "anyOf": [
+                          {
+                            "type": "number"
+                          },
+                          {
+                            "type": "string"
+                          }
+                        ],
+                        "description": "A cell value: a raw number (formatted by the renderer) or text."
+                      }
+                    },
+                    "required": ["format", "indicator", "note", "signal", "value"],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "type": "array"
+              },
+              "type": {
+                "enum": ["table"],
+                "type": "string"
+              }
+            },
+            "required": ["group", "headers", "rows", "title", "totals", "type"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "Values per named row and series. Rendered as a chart on screen and as a\ntable with data bars in documents.",
+            "properties": {
+              "data": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "values": {
+                      "items": {
+                        "type": "number"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": ["name", "values"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "format": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "description": "Plain number, up to 3 decimals.",
+                        "enum": ["number"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "Whole number with thousands separators.",
+                        "enum": ["integer"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "Money, 2 decimals, with the currency symbol.",
+                        "enum": ["currency"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A level, e.g. a rate of 4.1%.",
+                        "enum": ["percent"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A change, always signed, e.g. +7.83% or -2.4%.",
+                        "enum": ["percent_change"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A multiple, e.g. a P/E of 19.16x.",
+                        "enum": ["multiple"],
+                        "type": "string"
+                      }
+                    ],
+                    "description": "How a number is displayed. Percent values are in percentage points:\n7.83 means 7.83%, not 783%."
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "orientation": {
+                "enum": ["horizontal", "vertical"],
+                "type": "string"
+              },
+              "series": {
+                "description": "Series names, one per value in each row. May be empty when every row\nhas exactly one value.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["bar_chart"],
+                "type": "string"
+              }
+            },
+            "required": ["data", "format", "group", "orientation", "series", "title", "type"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "A trend over time: one line per series, each with one value per `x`\nlabel. Use null for a missing point; the line breaks there.",
+            "properties": {
+              "format": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "description": "Plain number, up to 3 decimals.",
+                        "enum": ["number"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "Whole number with thousands separators.",
+                        "enum": ["integer"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "Money, 2 decimals, with the currency symbol.",
+                        "enum": ["currency"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A level, e.g. a rate of 4.1%.",
+                        "enum": ["percent"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A change, always signed, e.g. +7.83% or -2.4%.",
+                        "enum": ["percent_change"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A multiple, e.g. a P/E of 19.16x.",
+                        "enum": ["multiple"],
+                        "type": "string"
+                      }
+                    ],
+                    "description": "How a number is displayed. Percent values are in percentage points:\n7.83 means 7.83%, not 783%."
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "series": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "values": {
+                      "description": "One value per `x` label; null where there is no data.",
+                      "items": {
+                        "type": ["number", "null"]
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": ["name", "values"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["line_chart"],
+                "type": "string"
+              },
+              "x": {
+                "description": "Labels along the horizontal axis, in order (dates, months, quarters).",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": ["format", "group", "series", "title", "type", "x"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "Current value against a target, per subject (price targets, sales\nagainst quota, spend against budget). The change to target is computed\nby the renderer; do not supply it.",
+            "properties": {
+              "data": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "current": {
+                      "type": "number"
+                    },
+                    "label": {
+                      "description": "Short qualifier, e.g. \"Buy\" or \"Q4 quota\".",
+                      "type": ["string", "null"]
+                    },
+                    "subject": {
+                      "description": "What is measured, e.g. \"NVDA\" or \"West region\".",
+                      "type": "string"
+                    },
+                    "target": {
+                      "type": "number"
+                    }
+                  },
+                  "required": ["current", "label", "subject", "target"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "format": {
+                "anyOf": [
+                  {
+                    "anyOf": [
+                      {
+                        "description": "Plain number, up to 3 decimals.",
+                        "enum": ["number"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "Whole number with thousands separators.",
+                        "enum": ["integer"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "Money, 2 decimals, with the currency symbol.",
+                        "enum": ["currency"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A level, e.g. a rate of 4.1%.",
+                        "enum": ["percent"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A change, always signed, e.g. +7.83% or -2.4%.",
+                        "enum": ["percent_change"],
+                        "type": "string"
+                      },
+                      {
+                        "description": "A multiple, e.g. a P/E of 19.16x.",
+                        "enum": ["multiple"],
+                        "type": "string"
+                      }
+                    ],
+                    "description": "How a number is displayed. Percent values are in percentage points:\n7.83 means 7.83%, not 783%."
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "description": "Format of `current` and `target` (e.g. currency)."
+              },
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["targets"],
+                "type": "string"
+              }
+            },
+            "required": ["data", "format", "group", "title", "type"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "One card per subject with short labelled values (positioning,\nscorecards, vendor comparisons).",
+            "properties": {
+              "data": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "label": {
+                            "description": "Theme, e.g. \"Valuation\" or \"Risk\".",
+                            "type": "string"
+                          },
+                          "signal": {
+                            "anyOf": [
+                              {
+                                "description": "Direction or sentiment of a value.",
+                                "enum": ["up", "down", "neutral"],
+                                "type": "string"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "value": {
+                            "description": "Keywords with the actual figure, at most 30 characters,\ne.g. \"24.88x fwd P/E\" or \"Beta 2.45, high vol\".",
+                            "type": "string"
+                          }
+                        },
+                        "required": ["label", "signal", "value"],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "subject": {
+                      "description": "The subject of the card, e.g. \"NVDA\".",
+                      "type": "string"
+                    }
+                  },
+                  "required": ["items", "subject"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["profiles"],
+                "type": "string"
+              }
+            },
+            "required": ["data", "group", "title", "type"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "Scores by source (reviews, surveys, satisfaction).",
+            "properties": {
+              "data": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "max_rating": {
+                      "type": "number"
+                    },
+                    "rating": {
+                      "type": "number"
+                    },
+                    "signal": {
+                      "anyOf": [
+                        {
+                          "description": "Direction or sentiment of a value.",
+                          "enum": ["up", "down", "neutral"],
+                          "type": "string"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "source": {
+                      "description": "Where the score comes from, e.g. \"Yelp\" or \"Customer survey\".",
+                      "type": "string"
+                    },
+                    "theme": {
+                      "description": "The main theme behind the score, e.g. \"Mixed delivery complaints\".",
+                      "type": ["string", "null"]
+                    }
+                  },
+                  "required": ["max_rating", "rating", "signal", "source", "theme"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "related": {
+                "description": "Related topics or searches, shown as a short list. May be empty.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["ratings"],
+                "type": "string"
+              }
+            },
+            "required": ["data", "group", "related", "title", "type"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "Numbered findings with supporting evidence.",
+            "properties": {
+              "data": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "evidence": {
+                      "description": "Supporting evidence. Supports **bold** markup only.",
+                      "type": "string"
+                    },
+                    "source": {
+                      "description": "Where the evidence comes from.",
+                      "type": ["string", "null"]
+                    },
+                    "title": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["evidence", "source", "title"],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["insight_cards"],
+                "type": "string"
+              }
+            },
+            "required": ["data", "group", "title", "type"],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "description": "Follow-up questions for the user. Interactive only; documents skip them.",
+            "properties": {
+              "group": {
+                "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
+                "type": ["string", "null"]
+              },
+              "prompts": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "title": {
+                "description": "Section heading.",
+                "type": "string"
+              },
+              "type": {
+                "enum": ["suggested_prompts"],
+                "type": "string"
+              }
+            },
+            "required": ["group", "prompts", "title", "type"],
+            "type": "object"
+          }
+        ],
+        "description": "One block of the report. `type` selects which content fields apply."
+      },
+      "type": "array"
+    },
+    "title": {
+      "description": "Short report title. Used as the document heading and the file name.",
+      "type": "string"
+    }
+  },
+  "required": ["sections", "title"],
+  "type": "object"
+}
