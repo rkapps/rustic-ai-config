@@ -1,0 +1,44 @@
+{
+  "agents": [
+    {
+      "id": "project-analyser-dynamic",
+      "name": "Project Analyser Orchestrator",
+      "description": "Analyse the project data based on the used prompt. Behave like a orchestrator who decide what agents to run and when enough output is available to synthesize.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline",
+      "llm_config": { "preset": "precise" },
+      "system_prompt": "prompts/project-analyser-dyanmic-system.md",
+      "standalone": false,
+      "pipeline": {
+        "type": "dynamic",
+        "available_agents": [{ "id": "project-retrieval" }, { "id": "project-synthesizer" }]
+      }
+    },
+    {
+      "id": "project-data",
+      "name": "Project Data Agent",
+      "description": "Search across projects for information contained in documents. Uses semantic search",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "data" },
+      "system_prompt": "prompts/project-data-system.md",
+      "standalone": false,
+      "tools": ["projects_list", "project_list_files", "project_search", "project_read_file"]
+    },
+    {
+      "id": "project-synthesizer",
+      "name": "Project Synthesizer Agent",
+      "description": "Synthesize product data into a structured report format",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "precise" },
+      "system_prompt": "prompts/project-synthesizer-system.md",
+      "response_format_schema_path": "../common/schemas/synthesizer-schema-refs.json",
+      "standalone": false,
+      "tools": []
+    }
+  ]
+}
