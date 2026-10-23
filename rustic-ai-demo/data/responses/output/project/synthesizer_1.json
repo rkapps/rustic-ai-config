@@ -1,0 +1,66 @@
+{
+  "sections": [
+    {
+      "content": "Your MRI report dated December 24, 2020 describes **severe osteoarthritis in both temporomandibular joints** and **anterior displacement of both articular discs without reduction**. The arthritis was progressive on the left and not significantly changed on the right compared with the December 27, 2017 MRI.",
+      "group": null,
+      "title": "Overview",
+      "type": "context"
+    },
+    {
+      "data": [
+        {
+          "evidence": "The report states there is severe osteoarthritis of both TMJs. On the left, the joint shows progressive remodeling of the articular surfaces and large osteophytes; on the right, there is marked remodeling of the mandibular condyle and lateral osteophytes.",
+          "source": "TMJ MRI impression and findings, 12/24/2020",
+          "title": "Severe bilateral TMJ osteoarthritis"
+        },
+        {
+          "evidence": "Both discs are displaced anteriorly and medially and fail to return to their normal position when the mouth opens, described in the impression as anterior dislocation without reduction.",
+          "source": "TMJ MRI impression and findings, 12/24/2020",
+          "title": "Bilateral nonreducing disc displacement"
+        },
+        { "evidence": "The left disc is described as macerated, and the left-sided osteoarthritis has progressed compared with the prior MRI. The right side was not significantly changed.", "source": "TMJ MRI findings, compared with 12/27/2017", "title": "Left worse than right progression" }
+      ],
+      "group": "findings",
+      "title": "MRI Findings",
+      "type": "insight_cards"
+    },
+    {
+      "group": "diagnosis",
+      "headers": ["Diagnosis", "Right TMJ", "Left TMJ"],
+      "rows": [
+        [
+          { "format": "number", "indicator": "dot", "note": null, "signal": "down", "value": "Severe osteoarthritis" },
+          { "format": "number", "indicator": "dot", "note": "Not significantly changed from prior study", "signal": "neutral", "value": "Severe osteoarthritis with condylar remodeling and lateral osteophytes" },
+          { "format": "number", "indicator": "dot", "note": "Progressive remodeling, large osteophytes, and macerated disc", "signal": "down", "value": "Severe osteoarthritis" }
+        ],
+        [
+          { "format": "number", "indicator": "dot", "note": "Anteriorly and medially displaced; does not reduce on opening", "signal": "down", "value": "Anterior disc dislocation without reduction" },
+          { "format": "number", "indicator": "dot", "note": "Anteriorly and medially displaced; does not reduce on opening", "signal": "down", "value": "Anterior disc dislocation without reduction" }
+        ]
+      ],
+      "title": "Reported Diagnosis",
+      "type": "table"
+    },
+    {
+      "data": [
+        { "evidence": "The report identifies severe bilateral TMJ osteoarthritis, progressive on the left and not significantly changed on the right.", "source": "Radiology impression", "title": "Main diagnosis" },
+        { "evidence": "Both TMJ discs remain displaced when the mouth opens, which is reported as anterior dislocation without reduction.", "source": "Radiology impression", "title": "Disc abnormality" }
+      ],
+      "group": null,
+      "title": "Key Insights",
+      "type": "insight_cards"
+    },
+    {
+      "group": null,
+      "prompts": [
+        "What treatments are commonly considered for severe TMJ osteoarthritis and nonreducing disc displacement?",
+        "What does “disc displacement without reduction” mean for jaw movement and symptoms?",
+        "Should I discuss the progressive left-sided findings with an oral and maxillofacial surgeon?",
+        "What symptoms would require more urgent medical attention?"
+      ],
+      "title": "Questions You Could Ask Your Clinician",
+      "type": "suggested_prompts"
+    }
+  ],
+  "title": "TMJ MRI Diagnosis"
+}

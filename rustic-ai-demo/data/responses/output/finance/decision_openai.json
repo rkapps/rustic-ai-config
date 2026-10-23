@@ -1,0 +1,12 @@
+{
+  "reasoning": "Need current market and comparative data for NVIDIA and its relevant peers before a report can be synthesized.",
+  "agents": [
+    {
+      "id": "finance-data",
+      "goal": "Identify NVIDIA's most relevant publicly traded semiconductor and AI-accelerator peers and retrieve the market, valuation, growth, profitability, and stock-performance data needed to compare NVDA with them."
+    }
+  ],
+  "execution": "sequential",
+  "stop": false,
+  "deliverable": "screen"
+}

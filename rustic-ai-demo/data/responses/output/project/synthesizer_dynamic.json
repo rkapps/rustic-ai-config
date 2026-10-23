@@ -1,0 +1,100 @@
+{
+  "sections": [
+    {
+      "content": "The MRI of both temporomandibular joints, performed on December 24, 2020 for limited jaw opening, shows severe arthritis in both joints. The left side has progressed compared with the prior MRI, while the right side is not significantly changed. Both discs are displaced toward the front and inside and do not return to their normal position when the mouth opens. Treatment decisions require evaluation by the treating dentist, oral and maxillofacial surgeon, or another qualified clinician.",
+      "group": null,
+      "title": "Overview",
+      "type": "context"
+    },
+    {
+      "group": "findings",
+      "headers": ["Finding", "Right TMJ", "Left TMJ"],
+      "rows": [
+        [
+          { "format": "number", "indicator": "dot", "note": null, "signal": "down", "value": "Osteoarthritis" },
+          { "format": "number", "indicator": "dot", "note": null, "signal": "down", "value": "Severe osteoarthritis" }
+        ],
+        [
+          { "format": "number", "indicator": "dot", "note": "Anteriorly and medially displaced; does not reduce when opening", "signal": "neutral", "value": "Disc displacement" },
+          { "format": "number", "indicator": "dot", "note": "Anteriorly and medially displaced; does not reduce when opening; disc substance is macerated", "signal": "neutral", "value": "Disc displacement" }
+        ],
+        [
+          { "format": "number", "indicator": "dot", "note": "Marked remodeling of the mandibular condyle and lateral osteophytes", "signal": "down", "value": "Bone changes" },
+          { "format": "number", "indicator": "dot", "note": "Progressive remodeling of the articular surfaces and large osteophytes", "signal": "down", "value": "Bone changes" }
+        ]
+      ],
+      "title": "Key MRI Findings",
+      "type": "table"
+    },
+    {
+      "group": "diagnosis",
+      "headers": ["Reported diagnosis", "Plain-language meaning"],
+      "rows": [
+        [
+          { "format": "number", "indicator": "badge", "note": null, "signal": "down", "value": "Severe bilateral TMJ osteoarthritis" },
+          { "format": "number", "indicator": "badge", "note": null, "signal": "down", "value": "Significant wear-and-tear arthritis affecting both jaw joints" }
+        ],
+        [
+          { "format": "number", "indicator": "badge", "note": null, "signal": "neutral", "value": "Anterior dislocation of both discs without reduction" },
+          { "format": "number", "indicator": "badge", "note": null, "signal": "neutral", "value": "Both cushioning discs are positioned too far forward and do not move back into place when the mouth opens" }
+        ]
+      ],
+      "title": "Diagnosis",
+      "type": "table"
+    },
+    {
+      "group": "comparison",
+      "headers": ["Joint", "Comparison with prior MRI"],
+      "rows": [
+        [
+          { "format": "number", "indicator": "arrow", "note": "Compared with the MRI dated December 27, 2017", "signal": "neutral", "value": "Right" },
+          { "format": "number", "indicator": "arrow", "note": null, "signal": "neutral", "value": "Severe osteoarthritis with no significant change" }
+        ],
+        [
+          { "format": "number", "indicator": "arrow", "note": "Compared with the MRI dated December 27, 2017", "signal": "down", "value": "Left" },
+          { "format": "number", "indicator": "arrow", "note": null, "signal": "down", "value": "Severe osteoarthritis with progressive remodeling and large osteophytes" }
+        ]
+      ],
+      "title": "Comparison With Prior Study",
+      "type": "table"
+    },
+    {
+      "group": "findings",
+      "headers": ["Additional observation", "Result"],
+      "rows": [
+        [
+          { "format": "number", "indicator": null, "note": null, "signal": "neutral", "value": "Visualized brain and soft tissues" },
+          { "format": "number", "indicator": null, "note": null, "signal": "neutral", "value": "Normal" }
+        ]
+      ],
+      "title": "Other Reported Structures",
+      "type": "table"
+    },
+    {
+      "data": [
+        {
+          "evidence": "The report describes **severe osteoarthritis in both TMJs**. The left joint shows progressive remodeling and large osteophytes, while the right joint is not significantly changed from the 2017 MRI.",
+          "source": "TMJ MRI report dated December 24, 2020",
+          "title": "The main problem is severe arthritis in both jaw joints"
+        },
+        { "evidence": "Both discs are displaced anteriorly and medially and **fail to reduce** when the mouth opens. The left disc is also described as macerated.", "source": "TMJ MRI findings and impression", "title": "Both discs remain out of position" },
+        { "evidence": "The MRI was obtained for **limited mandibular range of motion**, consistent with the reported joint degeneration and disc displacement.", "source": "Clinical history in the MRI report", "title": "The findings may relate to limited jaw movement" }
+      ],
+      "group": null,
+      "title": "Key Insights",
+      "type": "insight_cards"
+    },
+    {
+      "group": null,
+      "prompts": [
+        "What symptoms and examination findings should be reviewed alongside this MRI?",
+        "What treatment options should I discuss with my dentist or oral and maxillofacial surgeon?",
+        "What does progressive osteoarthritis on the left mean for my prognosis and follow-up?",
+        "Could physical therapy, medications, injections, or surgery be appropriate in my situation?"
+      ],
+      "title": "Questions to Discuss With Your Clinician",
+      "type": "suggested_prompts"
+    }
+  ],
+  "title": "TMJ MRI Diagnosis Summary"
+}

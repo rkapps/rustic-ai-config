@@ -1,0 +1,280 @@
+{
+  "title": "Semiconductor Peers: NVDA vs AMD, INTC, AVGO, TSM",
+  "sections": [
+    {
+      "type": "context",
+      "group": "overview",
+      "title": "Sector Context",
+      "content": "The semiconductor cohort is pulling back sharply, with all five AI-exposed names down **4–8%** in the latest session, but the longer-term picture diverges dramatically. **NVDA** stands out for profitability (**63.7% margin**, **117.2% ROE**) while **AMD** and **INTC** have delivered stronger 1-year returns (**132%** and **144%**) despite weaker fundamentals. **TSM** offers the cheapest valuation on sales (**0.44x P/S**) with solid margins, and **AVGO** combines **85.5% revenue growth** with a **42.9% profit margin** but trades at a premium **42.70x P/E**."
+    },
+    {
+      "type": "metric_cards",
+      "group": "overview",
+      "title": "Headline Snapshot",
+      "data": [
+        { "label": "NVDA price", "value": 212.55, "format": "currency", "change": -4.24, "change_format": "percent_change", "signal": "down", "benchmark": null },
+        { "label": "AMD price", "value": 508.12, "format": "currency", "change": -8.07, "change_format": "percent_change", "signal": "down", "benchmark": null },
+        { "label": "INTC price", "value": 85.34, "format": "currency", "change": -8.2, "change_format": "percent_change", "signal": "down", "benchmark": null },
+        { "label": "AVGO price", "value": 323.99, "format": "currency", "change": -4.09, "change_format": "percent_change", "signal": "down", "benchmark": null },
+        { "label": "TSM price", "value": 412.44, "format": "currency", "change": -4.5, "change_format": "percent_change", "signal": "down", "benchmark": null },
+        { "label": "TSM target upside", "value": 41.68, "format": "percent_change", "change": null, "change_format": null, "signal": "up", "benchmark": "$584.39 target" }
+      ]
+    },
+    {
+      "type": "bar_chart",
+      "group": "performance",
+      "title": "Short-Term Performance",
+      "data": [
+        { "name": "NVDA", "values": [0.3, -2.38, 6.45, 6.82] },
+        { "name": "AMD", "values": [-3.17, -10.2, 2.41, 58.91] },
+        { "name": "INTC", "values": [-5.26, -23.67, -7.25, 12.62] },
+        { "name": "AVGO", "values": [-2.44, -6.85, -13.78, -19.82] },
+        { "name": "TSM", "values": [0.44, -2.98, 4.2, 7.84] }
+      ],
+      "format": "percent_change",
+      "orientation": "horizontal",
+      "series": ["1W", "1M", "3M", "6M"]
+    },
+    {
+      "type": "bar_chart",
+      "group": "performance",
+      "title": "Long-Term Performance",
+      "data": [
+        { "name": "NVDA", "values": [22.82, 19.3, 54.87, 881.0] },
+        { "name": "AMD", "values": [132.21, 158.09, 250.04, 361.29] },
+        { "name": "INTC", "values": [143.86, 151.92, 307.01, 104.14] },
+        { "name": "AVGO", "values": [-0.69, -1.86, 90.91, 615.98] },
+        { "name": "TSM", "values": [48.16, 43.22, 119.06, 309.49] }
+      ],
+      "format": "percent_change",
+      "orientation": "horizontal",
+      "series": ["1Y", "YTD", "2Y", "5Y"]
+    },
+    {
+      "type": "table",
+      "group": "fundamentals",
+      "title": "Fundamentals Comparison",
+      "headers": ["Metric", "NVDA", "AMD", "INTC", "AVGO", "TSM"],
+      "rows": [
+        [
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 27.44 },
+          { "format": "multiple", "indicator": null, "note": "Premium", "signal": "down", "value": 136.41 },
+          { "format": "multiple", "indicator": null, "note": "Negative EPS", "signal": "down", "value": 0 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 42.7 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 27.23 }
+        ],
+        [
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 24.88 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 39.53 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "down", "value": 63.29 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "up", "value": 19.42 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "up", "value": 21.41 }
+        ],
+        [
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 23.78 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 14.93 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "up", "value": 7.4 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 17.46 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 11.6 }
+        ],
+        [
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 17.25 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 21.13 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 8.5 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 17.91 },
+          { "format": "multiple", "indicator": null, "note": "Cheapest", "signal": "up", "value": 0.441 }
+        ],
+        [
+          { "format": "multiple", "indicator": null, "note": null, "signal": "up", "value": 23.18 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "down", "value": 92.79 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "down", "value": 181.96 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "neutral", "value": 33.92 },
+          { "format": "multiple", "indicator": null, "note": null, "signal": "up", "value": 18.19 }
+        ],
+        [
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 63.7 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "neutral", "value": 15.6 },
+          { "format": "percent", "indicator": null, "note": "Loss-making", "signal": "down", "value": -19.8 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 42.9 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 51.1 }
+        ],
+        [
+          { "format": "percent", "indicator": null, "note": "Exceptional", "signal": "up", "value": 117.2 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "neutral", "value": 10.2 },
+          { "format": "percent", "indicator": null, "note": "Negative", "signal": "down", "value": -10.7 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 44.3 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 41.8 }
+        ],
+        [
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 105.9 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 50.1 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "neutral", "value": 25.4 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 85.5 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 50.9 }
+        ],
+        [
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 127.8 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 159.5 },
+          { "format": "percent", "indicator": null, "note": "Declining", "signal": "down", "value": -71.7 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 215.3 },
+          { "format": "percent", "indicator": null, "note": null, "signal": "up", "value": 68.7 }
+        ],
+        [
+          { "format": "number", "indicator": null, "note": "High vol", "signal": "down", "value": 2.216 },
+          { "format": "number", "indicator": null, "note": "High vol", "signal": "down", "value": 2.454 },
+          { "format": "number", "indicator": null, "note": "High vol", "signal": "down", "value": 2.23 },
+          { "format": "number", "indicator": null, "note": null, "signal": "neutral", "value": 1.476 },
+          { "format": "number", "indicator": null, "note": "Lower vol", "signal": "up", "value": 1.239 }
+        ],
+        [
+          { "format": "currency", "indicator": null, "note": null, "signal": "up", "value": 328.72 },
+          { "format": "currency", "indicator": null, "note": null, "signal": "up", "value": 636.21 },
+          { "format": "currency", "indicator": null, "note": null, "signal": "up", "value": 117.37 },
+          { "format": "currency", "indicator": null, "note": null, "signal": "up", "value": 527.59 },
+          { "format": "currency", "indicator": null, "note": null, "signal": "up", "value": 584.39 }
+        ],
+        [
+          { "format": null, "indicator": null, "note": null, "signal": "up", "value": "Buy" },
+          { "format": null, "indicator": null, "note": null, "signal": "up", "value": "Buy" },
+          { "format": null, "indicator": null, "note": null, "signal": "neutral", "value": "Hold" },
+          { "format": null, "indicator": null, "note": null, "signal": "up", "value": "Buy" },
+          { "format": null, "indicator": null, "note": null, "signal": "up", "value": "Buy" }
+        ]
+      ],
+      "totals": []
+    },
+    {
+      "type": "table",
+      "group": "technicals",
+      "title": "Technical Indicators",
+      "headers": ["Indicator", "NVDA", "AMD", "INTC", "AVGO", "TSM"],
+      "rows": [
+        [
+          { "format": "number", "indicator": null, "note": null, "signal": "neutral", "value": 47.51 },
+          { "format": "number", "indicator": null, "note": "Oversold", "signal": "up", "value": 28.18 },
+          { "format": "number", "indicator": null, "note": "Oversold", "signal": "up", "value": 24.23 },
+          { "format": "number", "indicator": null, "note": null, "signal": "neutral", "value": 38.86 },
+          { "format": "number", "indicator": null, "note": null, "signal": "neutral", "value": 44.38 }
+        ],
+        [
+          { "format": "percent_change", "indicator": null, "note": "Below, Golden Cross", "signal": "down", "value": -0.47 },
+          { "format": "percent_change", "indicator": null, "note": "Below, Golden Cross", "signal": "down", "value": -0.89 },
+          { "format": "percent_change", "indicator": null, "note": "Below, Golden Cross", "signal": "down", "value": -10.86 },
+          { "format": "percent_change", "indicator": null, "note": "Below, Death Cross", "signal": "down", "value": -6.31 },
+          { "format": "percent_change", "indicator": null, "note": "Below, Golden Cross", "signal": "down", "value": -0.65 }
+        ],
+        [
+          { "format": "number", "indicator": null, "note": "Flat momentum", "signal": "neutral", "value": -1.82 },
+          { "format": "number", "indicator": null, "note": "Flat momentum", "signal": "neutral", "value": -15.03 },
+          { "format": "number", "indicator": null, "note": "Flat momentum", "signal": "neutral", "value": -3.07 },
+          { "format": "number", "indicator": null, "note": "Flat momentum", "signal": "neutral", "value": -2.13 },
+          { "format": "number", "indicator": null, "note": "Flat momentum", "signal": "neutral", "value": -5.0 }
+        ],
+        [
+          { "format": null, "indicator": null, "note": "Conflicting signals", "signal": "neutral", "value": "Mixed" },
+          { "format": null, "indicator": null, "note": "Conflicting signals", "signal": "neutral", "value": "Mixed" },
+          { "format": null, "indicator": null, "note": "Conflicting signals", "signal": "neutral", "value": "Mixed" },
+          { "format": null, "indicator": null, "note": null, "signal": "down", "value": "Bearish" },
+          { "format": null, "indicator": null, "note": null, "signal": "neutral", "value": "Neutral" }
+        ]
+      ],
+      "totals": []
+    },
+    {
+      "type": "profiles",
+      "group": "technicals",
+      "title": "Positioning Profiles",
+      "data": [
+        {
+          "subject": "NVDA",
+          "items": [
+            { "label": "Valuation", "signal": "neutral", "value": "27.44x P/E, 24.88x fwd" },
+            { "label": "Profitability", "signal": "up", "value": "63.7% margin, 117.2% ROE" },
+            { "label": "Growth", "signal": "up", "value": "105.9% rev, 127.8% EPS" },
+            { "label": "Momentum", "signal": "neutral", "value": "RSI 47.5, near SMA50" }
+          ]
+        },
+        {
+          "subject": "AMD",
+          "items": [
+            { "label": "Valuation", "signal": "down", "value": "136.41x P/E, premium" },
+            { "label": "Profitability", "signal": "neutral", "value": "15.6% margin, 10.2% ROE" },
+            { "label": "Growth", "signal": "up", "value": "50.1% rev, 159.5% EPS" },
+            { "label": "Momentum", "signal": "down", "value": "RSI 28.2, oversold" }
+          ]
+        },
+        {
+          "subject": "INTC",
+          "items": [
+            { "label": "Valuation", "signal": "down", "value": "Negative EPS, 63.29x fwd" },
+            { "label": "Profitability", "signal": "down", "value": "-19.8% margin, losses" },
+            { "label": "Growth", "signal": "down", "value": "25.4% rev, -71.7% EPS" },
+            { "label": "Momentum", "signal": "down", "value": "RSI 24.2, deeply oversold" }
+          ]
+        },
+        {
+          "subject": "AVGO",
+          "items": [
+            { "label": "Valuation", "signal": "neutral", "value": "42.70x P/E, 19.42x fwd" },
+            { "label": "Profitability", "signal": "up", "value": "42.9% margin, 44.3% ROE" },
+            { "label": "Growth", "signal": "up", "value": "85.5% rev, 215.3% EPS" },
+            { "label": "Momentum", "signal": "down", "value": "RSI 38.9, death cross" }
+          ]
+        },
+        {
+          "subject": "TSM",
+          "items": [
+            { "label": "Valuation", "signal": "up", "value": "27.23x P/E, 0.44x P/S" },
+            { "label": "Profitability", "signal": "up", "value": "51.1% margin, 41.8% ROE" },
+            { "label": "Growth", "signal": "up", "value": "50.9% rev, 68.7% EPS" },
+            { "label": "Momentum", "signal": "neutral", "value": "RSI 44.4, near SMA50" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "insight_cards",
+      "group": "insights",
+      "title": "Key Findings",
+      "data": [
+        {
+          "title": "NVDA's profitability moat",
+          "evidence": "**NVDA** posts a **63.7%** profit margin and **117.2%** ROE, dwarfing AMD's **15.6%** margin and INTC's **-19.8%** loss rate. This profitability gap explains why NVDA commands a premium **27.44x P/E** despite delivering only **22.82%** 1-year returns versus AMD's **132.21%** and INTC's **143.86%**.",
+          "source": "Fundamentals & Performance Data"
+        },
+        {
+          "title": "AMD's premium valuation risk",
+          "evidence": "**AMD** trades at **136.41x** trailing P/E and **39.53x** forward P/E, the highest in the group, while RSI sits at **28.18** in oversold territory. The combination of stretched valuation and weak momentum suggests elevated downside risk if AI growth narrative falters.",
+          "source": "Valuation & Technicals"
+        },
+        {
+          "title": "INTC turnaround uncertainty",
+          "evidence": "**INTC** shows the deepest oversold signal (**RSI 24.23**) and sits **10.86%** below its 50-day SMA, yet earnings declined **71.7%** YoY with a **-19.8%** profit margin. Analyst consensus is only **Hold** with a **$117.37** target, reflecting skepticism about the recovery trajectory.",
+          "source": "Fundamentals & Technicals"
+        },
+        {
+          "title": "AVGO growth-profitability standout",
+          "evidence": "**AVGO** combines **85.5%** revenue growth and **215.3%** earnings growth with a **42.9%** profit margin, the second-best profitability in the group. However, a **death cross** and **-6.31%** distance below SMA50 signal near-term technical weakness despite the strong fundamentals.",
+          "source": "Fundamentals & Technicals"
+        },
+        {
+          "title": "TSM as the value play",
+          "evidence": "**TSM** trades at just **0.44x** P/S and **27.23x** P/E with **51.1%** margins, making it the cheapest on a sales basis despite **50.9%** revenue growth. With a **$584.39** analyst target versus **$412.44** current price, implied **41.68%** upside is the highest in the peer set.",
+          "source": "Valuation & Targets"
+        }
+      ]
+    },
+    {
+      "type": "suggested_prompts",
+      "group": "prompts",
+      "title": "Follow-Up Questions",
+      "prompts": [
+        "Should I buy NVDA at $212 or wait for a deeper pullback given the 4% drop?",
+        "Is AMD's 136x P/E justified by its 159% earnings growth, or is it a bubble risk?",
+        "What's driving INTC's deeply oversold RSI at 24 and is the turnaround credible?",
+        "Compare AVGO and NVDA on AI revenue exposure and which is the better AI play now?",
+        "Is TSM a better value opportunity than NVDA with its 0.44x P/S and 41% implied upside?"
+      ]
+    }
+  ]
+}
