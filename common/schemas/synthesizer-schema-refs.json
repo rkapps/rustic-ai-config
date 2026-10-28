@@ -70,7 +70,7 @@
           "additionalProperties": false
         },
         {
-          "description": "A table. Every row must have exactly `headers.len()` cells; the first\ncell of every row is its label.",
+          "description": "A table. `headers[0]` names the label column; every row has a `label`\nand exactly one cell per remaining header.",
           "type": "object",
           "properties": {
             "type": {
@@ -94,20 +94,14 @@
             "rows": {
               "type": "array",
               "items": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/$defs/Cell"
-                }
+                "$ref": "#/$defs/Row"
               }
             },
             "totals": {
               "description": "Optional summary rows shown below the body, e.g. totals or averages.\nSame shape as `rows`. Empty when there is no meaningful aggregate.",
               "type": "array",
               "items": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/$defs/Cell"
-                }
+                "$ref": "#/$defs/Row"
               }
             }
           },
@@ -373,18 +367,8 @@
           ]
         },
         "change": {
-          "description": "Change as a number, formatted with `change_format` (default: percent change).",
+          "description": "Change in percentage points, shown as a signed percent (e.g. -2.4).",
           "type": ["number", "null"]
-        },
-        "change_format": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Format"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "signal": {
           "anyOf": [
@@ -401,7 +385,7 @@
           "type": ["string", "null"]
         }
       },
-      "required": ["label", "value", "format", "change", "change_format", "signal", "benchmark"],
+      "required": ["label", "value", "format", "change", "signal", "benchmark"],
       "additionalProperties": false
     },
     "CellValue": {
@@ -455,13 +439,16 @@
       "type": "string",
       "enum": ["up", "down", "neutral"]
     },
-    "Cell": {
+    "Row": {
+      "description": "One table row: its label, the format of its numbers, and one cell per value\ncolumn.",
       "type": "object",
       "properties": {
-        "value": {
-          "$ref": "#/$defs/CellValue"
+        "label": {
+          "description": "What the row measures, e.g. \"P/E (TTM)\" or \"LDL (mg/dL)\".",
+          "type": "string"
         },
         "format": {
+          "description": "Format of every number in the row. Null for rows of text.",
           "anyOf": [
             {
               "$ref": "#/$defs/Format"
@@ -470,6 +457,38 @@
               "type": "null"
             }
           ]
+        },
+        "cells": {
+          "description": "One cell per header after the first, in header order.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Cell"
+          }
+        }
+      },
+      "required": ["label", "format", "cells"],
+      "additionalProperties": false
+    },
+    "Cell": {
+      "description": "A bare value (a number or text), or an object when the value needs a note\nor a signal.",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/CellValue"
+        },
+        {
+          "$ref": "#/$defs/AnnotatedCell"
+        }
+      ]
+    },
+    "AnnotatedCell": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "$ref": "#/$defs/CellValue"
+        },
+        "note": {
+          "description": "Short annotation shown under the value. Only when it adds something.",
+          "type": ["string", "null"]
         },
         "signal": {
           "anyOf": [
@@ -480,29 +499,10 @@
               "type": "null"
             }
           ]
-        },
-        "indicator": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Indicator"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "note": {
-          "description": "Short annotation shown under or beside the value.",
-          "type": ["string", "null"]
         }
       },
-      "required": ["value", "format", "signal", "indicator", "note"],
+      "required": ["value", "note", "signal"],
       "additionalProperties": false
-    },
-    "Indicator": {
-      "description": "How a signal is drawn next to a value.",
-      "type": "string",
-      "enum": ["dot", "badge", "arrow"]
     },
     "Orientation": {
       "type": "string",
@@ -608,11 +608,15 @@
       "type": "object",
       "properties": {
         "source": {
-          "description": "Where the score comes from, e.g. \"Yelp\" or \"Customer survey\".",
+          "description": "Where the score comes from, e.g. \"Yelp\", \"Customer survey\" or a news outlet.",
           "type": "string"
         },
         "rating": {
           "type": "number"
+        },
+        "min_rating": {
+          "description": "Lowest possible score. Null means 0 (star ratings); use -1 for\nsentiment scores that range from -1 to 1.",
+          "type": ["number", "null"]
         },
         "max_rating": {
           "type": "number"
@@ -632,7 +636,7 @@
           "type": ["string", "null"]
         }
       },
-      "required": ["source", "rating", "max_rating", "signal", "theme"],
+      "required": ["source", "rating", "min_rating", "max_rating", "signal", "theme"],
       "additionalProperties": false
     },
     "Insight": {
@@ -640,6 +644,17 @@
       "properties": {
         "title": {
           "type": "string"
+        },
+        "signal": {
+          "description": "What the insight means for the reader: up = an opportunity or strength,\ndown = a risk or weakness, neutral = mixed, worth watching.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Signal"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "evidence": {
           "description": "Supporting evidence. Supports **bold** markup only.",
@@ -650,7 +665,7 @@
           "type": ["string", "null"]
         }
       },
-      "required": ["title", "evidence", "source"],
+      "required": ["title", "signal", "evidence", "source"],
       "additionalProperties": false
     }
   }
