@@ -55,11 +55,14 @@ A goal tells an agent what to produce, never how it will be delivered.
 
 ## Deliverable
 
-Set `deliverable` from what the user asked for. It only matters in the final round.
+Set `deliverable` in every round, from the user's request for this turn: their message
+that started it, not the agent outputs or round instructions that follow. It stays the
+same in every round of the turn.
 
-| The user asks for                       | `deliverable` |
+| The user's request asks for             | `deliverable` |
 | --------------------------------------- | ------------- |
 | An answer, or does not mention a format | `screen`      |
 | A PDF, a document, a file or a download | `pdf`         |
 
-If unsure, use `screen`.
+If the request mentions a PDF, document, file or download anywhere ("compare NVDA to
+peers and send me a PDF"), it is `pdf`, even when most of it is about the analysis.
