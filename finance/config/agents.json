@@ -11,13 +11,40 @@
       "system_prompt": "prompts/finance-analyser-system.md",
       "standalone": true,
       "tools": [],
+      "delivery": {
+        "agent": { "id": "delivery" },
+        "allowed": ["pdf", "email"]
+      },
       "pipeline": {
         "type": "deterministic",
         "available_agents": [],
-        "stages": [
-          { "name": "fetch-data", "parallel": false, "sub_agents": [{ "id": "finance-data", "relay_tool_output": true }] },
-          { "name": "synthesize", "parallel": false, "sub_agents": [{ "id": "finance-synthesizer" }] }
-        ]
+        "stages": [{ "name": "fetch-data", "parallel": false, "sub_agents": [{ "id": "finance-data", "relay_tool_output": true }] }],
+        "synthesizer": { "id": "finance-synthesizer-report" }
+      },
+      "conversation": {
+        "default_strategy": "stateful",
+        "allowed_strategies": ["stateless", "stateful"]
+      }
+    },
+    {
+      "id": "finance-analyser-dynamic",
+      "name": "Finance Analyser Agent",
+      "description": "Analyses stocks, tickers, ML signals and portfolios.",
+      "enabled": true,
+      "origin": "system",
+      "execution": "pipeline",
+      "llm_config": { "preset": "precise" },
+      "system_prompt": "prompts/finance-analyser-dynamic-system.md",
+      "standalone": true,
+      "tools": [],
+      "delivery": {
+        "agent": { "id": "delivery" },
+        "allowed": ["pdf", "email"]
+      },
+      "pipeline": {
+        "type": "dynamic",
+        "available_agents": [{ "id": "finance-data", "relay_tool_output": true }],
+        "synthesizer": { "id": "finance-synthesizer-report" }
       },
       "conversation": {
         "default_strategy": "stateful",
@@ -70,16 +97,17 @@
       "tools": ["ticker_indicator", "ticker_performance", "ticker_sentiment", "ticker_snapshot"]
     },
     {
-      "id": "finance-synthesizer",
+      "id": "finance-synthesizer-report",
       "name": "Finance Synthesizer Agent",
       "description": "Synthesises macro-economic, demographic, market proxy and web research data into actionable consumer intelligence for business owners. Produces clear insights with regional context and strategic recommendations.",
       "enabled": true,
       "origin": "system",
+      "standalone": false,
       "execution": "pipeline_agent",
       "llm_config": { "preset": "thorough" },
-      "system_prompt": "prompts/finance-synthesizer-system.md",
-      "standalone": false,
-      "tools": []
+      "system_prompt": "prompts/finance-synthesizer-report-system.md",
+      "tools": [],
+      "response_format_schema_path": "schemas/synthesizer-schema-refs.json"
     }
   ]
 }
