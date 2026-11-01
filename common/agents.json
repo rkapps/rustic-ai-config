@@ -1,6 +1,18 @@
 {
   "agents": [
     {
+      "id": "delivery",
+      "name": "Delivery Agent",
+      "description": "Reads the user’s message and decides whether the answer should also be delivered as a PDF or by email. Does not answer the request.",
+      "origin": "system",
+      "enabled": true,
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "balanced" },
+      "system_prompt": "prompts/delivery-agent-system.md",
+      "standalone": false,
+      "response_format_schema_path": "schemas/delivery-schema.json"
+    },
+    {
       "id": "web-research",
       "name": "Web Research Agent",
       "description": "Retrieves content from specific URLs using web scraping. Use for reading articles, reports, industry publications, and web pages when a specific URL is known. Not for broad searches — only targeted URL retrieval.",

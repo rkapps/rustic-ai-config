@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reasoning", "delivery"],
+  "properties": {
+    "reasoning": { "type": "string" },
+    "delivery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pdf", "email"],
+      "properties": {
+        "pdf": { "type": "boolean" },
+        "email": { "type": "boolean" }
+      }
+    }
+  }
+}
