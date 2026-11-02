@@ -35,6 +35,7 @@
       "execution": "pipeline",
       "llm_config": { "preset": "precise" },
       "system_prompt": "prompts/finance-analyser-dynamic-system.md",
+      "response_format_schema_path": "schemas/finance-decision-schema.json",
       "standalone": true,
       "tools": [],
       "delivery": {
