@@ -4,7 +4,7 @@
       "id": "chat",
       "name": "General Assistant",
       "description": "You are a helpful, knowledgeable assistant.",
-      "enabled": true,
+      "enabled": false,
       "origin": "system",
       "execution": "single_agent",
       "llm_config": { "preset": "precise" },
@@ -25,15 +25,17 @@
       "execution": "pipeline",
       "llm_config": { "preset": "precise" },
       "system_prompt": "prompts/consumer-trend-system.md",
+      "response_format_schema_path": "schemas/consumer-trend-decision-schema.json",
       "standalone": true,
       "tools": [],
+      "delivery": {
+        "agent": { "id": "delivery" },
+        "allowed": ["pdf", "email"]
+      },
       "pipeline": {
-        "type": "deterministic",
-        "available_agents": [],
-        "stages": [
-          { "name": "data_gathering", "parallel": true, "sub_agents": [{ "id": "economic-data" }, { "id": "finance-data" }, { "id": "web-research" }, { "id": "web-sentiment" }] },
-          { "name": "synthesize", "parallel": false, "sub_agents": [{ "id": "consumer-trend-synthesizer" }] }
-        ]
+        "type": "dynamic",
+        "available_agents": [{ "id": "economic-data" }, { "id": "finance-data" }, { "id": "web-research" }, { "id": "web-sentiment" }],
+        "synthesizer": { "id": "consumer-trend-synthesizer" }
       },
       "conversation": {
         "default_strategy": "stateful",
@@ -46,10 +48,11 @@
       "description": "Synthesises macro-economic, demographic, market proxy and web research data into actionable consumer intelligence for business owners. Produces clear insights with regional context and strategic recommendations.",
       "enabled": true,
       "origin": "system",
+      "standalone": false,
       "execution": "pipeline_agent",
       "llm_config": { "preset": "thorough" },
       "system_prompt": "prompts/consumer-trend-synthesizer-system.md",
-      "standalone": false,
+      "response_format_schema_path": "schemas/synthesizer-schema-refs.json",
       "tools": []
     }
   ]

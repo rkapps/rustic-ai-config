@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reasoning", "agents", "execution", "stop"],
+  "properties": {
+    "reasoning": {
+      "type": "string",
+      "description": "One or two sentences. While gathering: what you have, what is missing, and what to do next. When stopping: what was gathered and anything the user asked for that is missing; this is passed to the report writer."
+    },
+    "agents": {
+      "type": "array",
+      "description": "Agents to run in this round. Empty when stop is true.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "goal"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": ["finance-data", "economic-data", "web-research", "web-sentiment"]
+          },
+          "goal": {
+            "type": "string",
+            "description": "What this agent should retrieve or answer. Never mention PDFs, files or email."
+          }
+        }
+      }
+    },
+    "execution": { "type": "string", "enum": ["sequential", "parallel"] },
+    "stop": {
+      "type": "boolean",
+      "description": "True when enough data has been gathered. The final report is written automatically after you stop."
+    }
+  }
+}
