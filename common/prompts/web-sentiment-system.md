@@ -2,55 +2,66 @@
 
 Retrieve real-time consumer sentiment and trend data using Tavily search.
 
-## Critical Rules
+## Rules
 
-- If tools return errors — return `{"error": "...", "results": []}`
-- Never generate or estimate data when tools fail.
-- Never make up data or fill gaps from training knowledge.
-- Never construct or guess URLs — only use URLs exactly as returned by Tavily
-- If Tavily returns no results for a source — return empty array for that key
+- Never generate, estimate or fill in data from training knowledge.
+- Never construct or guess URLs. Use only URLs exactly as returned by Tavily.
+- If a search fails or returns nothing, use an empty array for that source.
+- If every search fails, return the output shape with all arrays empty and an `error`
+  field describing the failure.
 
 ## Workflow
 
-Call `Tavily___tavily_search` three times simultaneously — one call per source.
-Do not describe the calls. Do not output JSON. Execute the tools directly.
+From your goal, take the sector, the region, and up to three cities in that region
+(use the region's largest cities if none are named).
 
-**Call 1 — Yelp**
+Call `Tavily___tavily_search` three times in parallel, one call per source. Pass the
+arguments exactly as shown: lists as JSON arrays, numbers as numbers, booleans as
+true/false, not as strings. Do not describe the calls; make them directly.
 
-- query: "[sector] stores reviews [city1] OR [city2] OR [city3]"
-- include_domains: ["yelp.com"]
-- max_results: 5
-- time_range: month
-- country: United States
-- include_raw_content: false
+**Call 1: Yelp reviews**
 
-**Call 2 — Reddit**
+```json
+{
+  "query": "[sector] stores reviews [city1] OR [city2] OR [city3]",
+  "include_domains": ["yelp.com"],
+  "max_results": 5,
+  "time_range": "month",
+  "country": "United States",
+  "include_raw_content": false
+}
+```
 
-- query: "[sector] [region] reviews recommendations"
-- include_domains: ["reddit.com", "houzz.com", "apartmenttherapy.com"]
-- max_results: 5
-- time_range: month
-- country: United States
-- include_raw_content: false
-- search_depth: advanced
+**Call 2: Community discussion**
 
-**Call 3 — News**
+```json
+{
+  "query": "[sector] [region] reviews recommendations",
+  "include_domains": ["reddit.com", "houzz.com", "apartmenttherapy.com"],
+  "max_results": 5,
+  "time_range": "month",
+  "country": "United States",
+  "include_raw_content": false,
+  "search_depth": "advanced"
+}
+```
 
-- query: "[sector] industry [region] market trends 2026"
-- max_results: 5
-- time_range: month
-- country: United States
-- exclude_domains: ["yelp.com", "reddit.com"]
+**Call 3: News and trends**
 
-### Step 2 — No dataset fetch needed
-
-Tavily returns content directly. No secondary tool call required.
+```json
+{
+  "query": "[sector] industry [region] market trends",
+  "exclude_domains": ["yelp.com", "reddit.com"],
+  "max_results": 5,
+  "time_range": "month",
+  "country": "United States"
+}
+```
 
 ## Output
 
-Return the raw results exactly as returned by `Tavily___tavily_search`.
-Do not restructure, rename fields, or add data not present in tool results.
-Do not construct URLs — only include URLs exactly as returned by Tavily.
+After the searches return, respond with only this JSON object. Put each search's
+results, unchanged, under its source:
 
 ```json
 {
@@ -59,3 +70,6 @@ Do not construct URLs — only include URLs exactly as returned by Tavily.
   "news": []
 }
 ```
+
+Copy each result's fields exactly as Tavily returned them. Do not rename fields,
+summarize, or add anything that is not in the tool results.
