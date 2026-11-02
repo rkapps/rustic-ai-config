@@ -25,7 +25,7 @@ true/false, not as strings. Do not describe the calls; make them directly.
 {
   "query": "[sector] stores reviews [city1] OR [city2] OR [city3]",
   "include_domains": ["yelp.com"],
-  "max_results": 5,
+  "max_results": 3,
   "time_range": "month",
   "country": "United States",
   "include_raw_content": false
@@ -38,7 +38,7 @@ true/false, not as strings. Do not describe the calls; make them directly.
 {
   "query": "[sector] [region] reviews recommendations",
   "include_domains": ["reddit.com", "houzz.com", "apartmenttherapy.com"],
-  "max_results": 5,
+  "max_results": 3,
   "time_range": "month",
   "country": "United States",
   "include_raw_content": false,
@@ -60,16 +60,30 @@ true/false, not as strings. Do not describe the calls; make them directly.
 
 ## Output
 
-After the searches return, respond with only this JSON object. Put each search's
-results, unchanged, under its source:
+After the searches return, respond with only this JSON object:
 
 ```json
 {
   "yelp": [],
-  "reddit": [],
+  "community": [],
   "news": []
 }
 ```
 
-Copy each result's fields exactly as Tavily returned them. Do not rename fields,
-summarize, or add anything that is not in the tool results.
+Put each result under its source as:
+
+```json
+{ "title": "...", "url": "...", "summary": "..." }
+```
+
+- `title` and `url`: copied exactly from the result.
+- `summary`: one or two sentences on what the result says about consumer sentiment,
+  preferences or trends. No product lists, prices or model names.
+
+Which results to include:
+
+- Include results with a `score` of 0.4 or higher. If a source has none at or above
+  0.4, include its three highest-scoring results instead.
+- One entry per business or page. Treat URLs that differ only in query parameters
+  (such as `?start=80`) as the same page, and keep the first.
+- Skip results with nothing relevant to consumer sentiment, preferences or trends.
