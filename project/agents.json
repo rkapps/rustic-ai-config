@@ -7,24 +7,32 @@
       "enabled": true,
       "origin": "system",
       "execution": "pipeline",
+      "standalone": true,
       "llm_config": { "preset": "precise" },
-      "system_prompt": "prompts/project-analyser-dyanmic-system.md",
-      "standalone": false,
+      "system_prompt": "prompts/project-analyser-dynamic-system.md",
+      "response_format_schema_path": "schemas/project-decision-schema.json",
+      "delivery": {
+        "agent": { "id": "delivery" },
+        "allowed": ["pdf", "email"]
+      },
       "pipeline": {
         "type": "dynamic",
-        "available_agents": [{ "id": "project-retrieval" }, { "id": "project-synthesizer" }]
-      }
+        "available_agents": [{ "id": "project-retrieval" }],
+        "stages": [],
+        "synthesizer": { "id": "project-synthesizer" }
+      },
+      "tools": []
     },
     {
-      "id": "project-data",
-      "name": "Project Data Agent",
+      "id": "project-retrieval",
+      "name": "Project Retrieval Agent",
       "description": "Search across projects for information contained in documents. Uses semantic search",
       "enabled": true,
       "origin": "system",
       "execution": "pipeline_agent",
-      "llm_config": { "preset": "data" },
-      "system_prompt": "prompts/project-data-system.md",
       "standalone": false,
+      "llm_config": { "preset": "data" },
+      "system_prompt": "prompts/project-retrieval-system.md",
       "tools": ["projects_list", "project_list_files", "project_search", "project_read_file"]
     },
     {
@@ -33,11 +41,11 @@
       "description": "Synthesize product data into a structured report format",
       "enabled": true,
       "origin": "system",
+      "standalone": false,
       "execution": "pipeline_agent",
       "llm_config": { "preset": "precise" },
       "system_prompt": "prompts/project-synthesizer-system.md",
       "response_format_schema_path": "../common/schemas/synthesizer-schema-refs.json",
-      "standalone": false,
       "tools": []
     }
   ]

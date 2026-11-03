@@ -45,6 +45,7 @@
       "pipeline": {
         "type": "dynamic",
         "available_agents": [{ "id": "finance-data", "relay_tool_output": true }],
+        "stages": [],
         "synthesizer": { "id": "finance-synthesizer-report" }
       },
       "conversation": {
@@ -108,7 +109,7 @@
       "llm_config": { "preset": "thorough" },
       "system_prompt": "prompts/finance-synthesizer-report-system.md",
       "tools": [],
-      "response_format_schema_path": "schemas/synthesizer-schema-refs.json"
+      "response_format_schema_path": "../common/schemas/synthesizer-schema-refs.json"
     }
   ]
 }

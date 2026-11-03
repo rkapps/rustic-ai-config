@@ -35,6 +35,7 @@
       "pipeline": {
         "type": "dynamic",
         "available_agents": [{ "id": "economic-data" }, { "id": "finance-data" }, { "id": "web-research" }, { "id": "web-sentiment" }],
+        "stages": [],
         "synthesizer": { "id": "consumer-trend-synthesizer" }
       },
       "conversation": {
@@ -52,7 +53,7 @@
       "execution": "pipeline_agent",
       "llm_config": { "preset": "thorough" },
       "system_prompt": "prompts/consumer-trend-synthesizer-system.md",
-      "response_format_schema_path": "schemas/synthesizer-schema-refs.json",
+      "response_format_schema_path": "../common/schemas/synthesizer-schema-refs.json",
       "tools": []
     }
   ]
