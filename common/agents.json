@@ -20,7 +20,7 @@
       "enabled": true,
       "execution": "pipeline_agent",
       "llm_config": { "preset": "data" },
-      "system_prompt": "prompts/economic-data-system.md",
+      "system_prompt": "prompts/web-research-system.md",
       "standalone": false,
       "tools": [],
       "mcp_tools": ["Tavily___tavily_extract"]
