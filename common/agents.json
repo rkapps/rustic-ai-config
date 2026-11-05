@@ -10,6 +10,7 @@
       "llm_config": { "preset": "balanced" },
       "system_prompt": "prompts/delivery-agent-system.md",
       "standalone": false,
+      "tools": [],
       "response_format_schema_path": "schemas/delivery-schema.json"
     },
     {
