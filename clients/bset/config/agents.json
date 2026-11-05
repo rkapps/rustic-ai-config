@@ -1,0 +1,128 @@
+{
+  "agents": [
+    {
+      "id": "bset-retail-sales-analyst",
+      "name": "Bassett Retail Sales Analyst",
+      "description": "descriptions/bset-retail-sales-description.md",
+      "origin": "client",
+      "enabled": true,
+      "standalone": false,
+      "execution": "pipeline",
+      "llm_config": { "preset": "precise" },
+      "client_prompt": "prompts/bset-retail-sales-system.md",
+      "tools": [],
+      "response_format_schema_path": "schemas/delivery-schema.json",
+      "pipeline": {
+        "type": "deterministic",
+        "available_agents": [],
+        "stages": [
+          {
+            "name": "fetch-data",
+            "parallel": false,
+            "sub_agents": [{ "id": "domo-retail-data" }]
+          }
+        ],
+        "synthesizer": { "id": "bset-synthesizer" }
+      }
+    },
+    {
+      "id": "bset-sales-intelligence-analyst",
+      "name": "Bassett Sales Intelligence Analyst",
+      "description": "descriptions/bset-sales-intelligence-description.md",
+      "execution": "pipeline",
+      "enabled": true,
+      "origin": "client",
+      "llm_config": { "preset": "precise" },
+      "system_prompt": "prompts/agents/bset-sales-intelligence-system.md",
+      "response_format_schema_path": "schemas/bset-decision-schema.json",
+      "standalone": true,
+      "tools": [],
+      "pipeline": {
+        "type": "dynamic",
+        "available_agents": [
+          { "id": "domo-retail-data", "relay_tool_output": true },
+          { "id": "economic-data" },
+          { "id": "finance-data" },
+          { "id": "web-research", "relay_tool_output": true },
+          { "id": "web-sentiment", "relay_tool_output": true }
+        ],
+        "stages": [],
+        "synthesizer": { "id": "bset-synthesizer" }
+      },
+      "conversation": {
+        "default_strategy": "stateless",
+        "allowed_strategies": ["stateless", "stateful"]
+      }
+    },
+    {
+      "id": "domo-retail-data",
+      "name": "Domo Retail Orders Data",
+      "description": "Domo Retail Orders data agent",
+      "enabled": true,
+      "origin": "client",
+      "execution": "pipeline",
+      "llm_config": { "preset": "precise" },
+      "client_prompt": "prompts/agents/domo-retail-data-system.md",
+      "standalone": false,
+      "tools": [],
+      "pipeline": {
+        "type": "deterministic",
+        "available_agents": [],
+        "stages": [
+          {
+            "name": "fetch-calendar",
+            "parallel": false,
+            "sub_agents": [
+              { "id": "domo-calendar-data", "relay_tool_output": false }
+            ]
+          },
+          {
+            "name": "fetch_data",
+            "parallel": false,
+            "sub_agents": [
+              { "id": "domo-retail-fetch-data", "relay_tool_output": true }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "domo-calendar-data",
+      "name": "Domo Calendar Agent",
+      "description": "Retrieves Domo Fiscal Calendar Agent",
+      "enabled": true,
+      "origin": "client",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "data" },
+      "client_prompt": "prompts/agents/domo-calendar-data-system.md",
+      "standalone": false,
+      "tools": [],
+      "mcp_tools": ["BsetDomo___domo_sql_query"]
+    },
+    {
+      "id": "domo-retail-fetch-data",
+      "name": "Bassett Domo Retail Fetch Agent",
+      "description": "Retriees Retail orders data from BSET Domo",
+      "enabled": true,
+      "origin": "client",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "data" },
+      "client_prompt": "prompts/agents/domo-retail-fetch-data-system.md",
+      "standalone": false,
+      "tools": [],
+      "mcp_tools": ["BsetDomo___domo_sql_query"]
+    },
+    {
+      "id": "bset-synthesizer",
+      "name": "Bassett Synthesizer Agent",
+      "description": "Synthesises macro-economic, demographic, market proxy and web research data into actionable consumer intelligence for business owners. Produces clear insights with regional context and strategic recommendations.",
+      "enabled": true,
+      "origin": "client",
+      "execution": "pipeline_agent",
+      "llm_config": { "preset": "precise" },
+      "client_prompt": "prompts/agents/bset-synthesizer-system.md",
+      "standalone": false,
+      "tools": []
+    }
+  ]
+}
