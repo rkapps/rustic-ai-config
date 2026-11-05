@@ -1,5 +1,8 @@
 {
-  "required": ["title", "sections"],
+  "required": [
+    "title",
+    "sections"
+  ],
   "properties": {
     "title": {
       "description": "Short report title. Used as the document heading and the file name.",
@@ -26,7 +29,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["context"]
+              "enum": [
+                "context"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -34,13 +39,21 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "content": {
               "type": "string"
             }
           },
-          "required": ["type", "title", "group", "content"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "content"
+          ],
           "additionalProperties": false
         },
         {
@@ -49,7 +62,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["metric_cards"]
+              "enum": [
+                "metric_cards"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -57,7 +72,10 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "data": {
               "type": "array",
@@ -66,7 +84,12 @@
               }
             }
           },
-          "required": ["type", "title", "group", "data"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "data"
+          ],
           "additionalProperties": false
         },
         {
@@ -75,7 +98,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["table"]
+              "enum": [
+                "table"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -83,12 +108,29 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "headers": {
               "type": "array",
               "items": {
                 "type": "string"
+              }
+            },
+            "formats": {
+              "description": "Number format per column, one per header (the first, for the label\ncolumn, is ignored). Use when columns hold different kinds of number,\ne.g. one row per store with revenue, units and margin. Empty when each\nrow sets its own `format`.",
+              "type": "array",
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/Format"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               }
             },
             "rows": {
@@ -105,7 +147,15 @@
               }
             }
           },
-          "required": ["type", "title", "group", "headers", "rows", "totals"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "headers",
+            "formats",
+            "rows",
+            "totals"
+          ],
           "additionalProperties": false
         },
         {
@@ -114,7 +164,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["bar_chart"]
+              "enum": [
+                "bar_chart"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -122,7 +174,10 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "series": {
               "description": "Series names, one per value in each row. May be empty when every row\nhas exactly one value.",
@@ -151,7 +206,15 @@
               }
             }
           },
-          "required": ["type", "title", "group", "series", "format", "orientation", "data"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "series",
+            "format",
+            "orientation",
+            "data"
+          ],
           "additionalProperties": false
         },
         {
@@ -160,7 +223,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["line_chart"]
+              "enum": [
+                "line_chart"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -168,7 +233,10 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "x": {
               "description": "Labels along the horizontal axis, in order (dates, months, quarters).",
@@ -194,7 +262,14 @@
               }
             }
           },
-          "required": ["type", "title", "group", "x", "format", "series"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "x",
+            "format",
+            "series"
+          ],
           "additionalProperties": false
         },
         {
@@ -203,7 +278,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["targets"]
+              "enum": [
+                "targets"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -211,7 +288,10 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "format": {
               "description": "Format of `current` and `target` (e.g. currency).",
@@ -231,7 +311,13 @@
               }
             }
           },
-          "required": ["type", "title", "group", "format", "data"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "format",
+            "data"
+          ],
           "additionalProperties": false
         },
         {
@@ -240,7 +326,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["profiles"]
+              "enum": [
+                "profiles"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -248,7 +336,10 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "data": {
               "type": "array",
@@ -257,7 +348,12 @@
               }
             }
           },
-          "required": ["type", "title", "group", "data"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "data"
+          ],
           "additionalProperties": false
         },
         {
@@ -266,7 +362,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["ratings"]
+              "enum": [
+                "ratings"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -274,7 +372,10 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "data": {
               "type": "array",
@@ -290,7 +391,13 @@
               }
             }
           },
-          "required": ["type", "title", "group", "data", "related"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "data",
+            "related"
+          ],
           "additionalProperties": false
         },
         {
@@ -299,7 +406,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["insight_cards"]
+              "enum": [
+                "insight_cards"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -307,7 +416,10 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "data": {
               "type": "array",
@@ -316,7 +428,12 @@
               }
             }
           },
-          "required": ["type", "title", "group", "data"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "data"
+          ],
           "additionalProperties": false
         },
         {
@@ -325,7 +442,9 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["suggested_prompts"]
+              "enum": [
+                "suggested_prompts"
+              ]
             },
             "title": {
               "description": "Section heading.",
@@ -333,7 +452,10 @@
             },
             "group": {
               "description": "Optional grouping key used by the UI (e.g. tabs or anchors), such as\n\"overview\", \"fundamentals\" or \"risk\".",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "prompts": {
               "type": "array",
@@ -342,7 +464,12 @@
               }
             }
           },
-          "required": ["type", "title", "group", "prompts"],
+          "required": [
+            "type",
+            "title",
+            "group",
+            "prompts"
+          ],
           "additionalProperties": false
         }
       ]
@@ -368,7 +495,10 @@
         },
         "change": {
           "description": "Change in percentage points, shown as a signed percent (e.g. -2.4).",
-          "type": ["number", "null"]
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "signal": {
           "anyOf": [
@@ -382,10 +512,20 @@
         },
         "benchmark": {
           "description": "Comparison text, e.g. \"$114.47 target\" or \"vs BA 833x\".",
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
-      "required": ["label", "value", "format", "change", "signal", "benchmark"],
+      "required": [
+        "label",
+        "value",
+        "format",
+        "change",
+        "signal",
+        "benchmark"
+      ],
       "additionalProperties": false
     },
     "CellValue": {
@@ -405,39 +545,55 @@
         {
           "description": "Plain number, up to 3 decimals.",
           "type": "string",
-          "enum": ["number"]
+          "enum": [
+            "number"
+          ]
         },
         {
           "description": "Whole number with thousands separators.",
           "type": "string",
-          "enum": ["integer"]
+          "enum": [
+            "integer"
+          ]
         },
         {
           "description": "Money, 2 decimals, with the currency symbol.",
           "type": "string",
-          "enum": ["currency"]
+          "enum": [
+            "currency"
+          ]
         },
         {
           "description": "A level, e.g. a rate of 4.1%.",
           "type": "string",
-          "enum": ["percent"]
+          "enum": [
+            "percent"
+          ]
         },
         {
           "description": "A change, always signed, e.g. +7.83% or -2.4%.",
           "type": "string",
-          "enum": ["percent_change"]
+          "enum": [
+            "percent_change"
+          ]
         },
         {
           "description": "A multiple, e.g. a P/E of 19.16x.",
           "type": "string",
-          "enum": ["multiple"]
+          "enum": [
+            "multiple"
+          ]
         }
       ]
     },
     "Signal": {
       "description": "Direction or sentiment of a value.",
       "type": "string",
-      "enum": ["up", "down", "neutral"]
+      "enum": [
+        "up",
+        "down",
+        "neutral"
+      ]
     },
     "Row": {
       "description": "One table row: its label, the format of its numbers, and one cell per value\ncolumn.",
@@ -448,10 +604,21 @@
           "type": "string"
         },
         "format": {
-          "description": "Format of every number in the row. Null for rows of text.",
+          "description": "Format of every number in the row. Null for rows of text, or when the\ntable's column `formats` apply.",
           "anyOf": [
             {
               "$ref": "#/$defs/Format"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kind": {
+          "description": "`subtotal` for a row that sums the rows above it within the table (e.g. a\nregion total between regions). Null for ordinary rows. Grand totals go in\nthe table's `totals`.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RowKind"
             },
             {
               "type": "null"
@@ -466,8 +633,20 @@
           }
         }
       },
-      "required": ["label", "format", "cells"],
+      "required": [
+        "label",
+        "format",
+        "kind",
+        "cells"
+      ],
       "additionalProperties": false
+    },
+    "RowKind": {
+      "description": "What a row is, when it is not an ordinary row.",
+      "type": "string",
+      "enum": [
+        "subtotal"
+      ]
     },
     "Cell": {
       "description": "A bare value (a number or text), or an object when the value needs a note\nor a signal.",
@@ -488,7 +667,10 @@
         },
         "note": {
           "description": "Short annotation shown under the value. Only when it adds something.",
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "signal": {
           "anyOf": [
@@ -501,12 +683,19 @@
           ]
         }
       },
-      "required": ["value", "note", "signal"],
+      "required": [
+        "value",
+        "note",
+        "signal"
+      ],
       "additionalProperties": false
     },
     "Orientation": {
       "type": "string",
-      "enum": ["horizontal", "vertical"]
+      "enum": [
+        "horizontal",
+        "vertical"
+      ]
     },
     "BarRow": {
       "type": "object",
@@ -521,7 +710,10 @@
           }
         }
       },
-      "required": ["name", "values"],
+      "required": [
+        "name",
+        "values"
+      ],
       "additionalProperties": false
     },
     "LineSeries": {
@@ -534,11 +726,17 @@
           "description": "One value per `x` label; null where there is no data.",
           "type": "array",
           "items": {
-            "type": ["number", "null"]
+            "type": [
+              "number",
+              "null"
+            ]
           }
         }
       },
-      "required": ["name", "values"],
+      "required": [
+        "name",
+        "values"
+      ],
       "additionalProperties": false
     },
     "Target": {
@@ -556,10 +754,18 @@
         },
         "label": {
           "description": "Short qualifier, e.g. \"Buy\" or \"Q4 quota\".",
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
-      "required": ["subject", "current", "target", "label"],
+      "required": [
+        "subject",
+        "current",
+        "target",
+        "label"
+      ],
       "additionalProperties": false
     },
     "Profile": {
@@ -576,7 +782,10 @@
           }
         }
       },
-      "required": ["subject", "items"],
+      "required": [
+        "subject",
+        "items"
+      ],
       "additionalProperties": false
     },
     "ProfileItem": {
@@ -601,7 +810,11 @@
           ]
         }
       },
-      "required": ["label", "value", "signal"],
+      "required": [
+        "label",
+        "value",
+        "signal"
+      ],
       "additionalProperties": false
     },
     "Rating": {
@@ -616,7 +829,10 @@
         },
         "min_rating": {
           "description": "Lowest possible score. Null means 0 (star ratings); use -1 for\nsentiment scores that range from -1 to 1.",
-          "type": ["number", "null"]
+          "type": [
+            "number",
+            "null"
+          ]
         },
         "max_rating": {
           "type": "number"
@@ -633,10 +849,20 @@
         },
         "theme": {
           "description": "The main theme behind the score, e.g. \"Mixed delivery complaints\".",
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
-      "required": ["source", "rating", "min_rating", "max_rating", "signal", "theme"],
+      "required": [
+        "source",
+        "rating",
+        "min_rating",
+        "max_rating",
+        "signal",
+        "theme"
+      ],
       "additionalProperties": false
     },
     "Insight": {
@@ -662,10 +888,18 @@
         },
         "source": {
           "description": "Where the evidence comes from.",
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
-      "required": ["title", "signal", "evidence", "source"],
+      "required": [
+        "title",
+        "signal",
+        "evidence",
+        "source"
+      ],
       "additionalProperties": false
     }
   }
