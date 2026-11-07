@@ -1,0 +1,309 @@
+[
+  {
+    "dataSourceId": "15dabf0f-7e84-4aba-8407-52db59ece80f",
+    "dataSourceName": "Storis | Orders - Retail Written Ai View",
+    "description": "",
+    "columns": [
+      {
+        "name": "Order ID",
+        "type": "STRING",
+        "description": "This column is the Order Number. Multiple SKU might exist within one Order.",
+        "synonyms": ["Order", "btaorderid", "Order Number"]
+      },
+      {
+        "name": "SKU",
+        "type": "STRING",
+        "description": "This is the item productID, or SKU.",
+        "synonyms": ["Item", "ProductID"]
+      },
+      {
+        "name": "Date",
+        "type": "DATE",
+        "description": "Transaction Day",
+        "synonyms": ["Day"]
+      },
+      {
+        "name": "TransCodeID",
+        "type": "LONG",
+        "description": "This is a special Transaction Code identifier.",
+        "synonyms": ["Transaction Code"]
+      },
+      {
+        "name": "Sales",
+        "type": "DECIMAL",
+        "description": "Total Net Sales",
+        "synonyms": ["Total Sales"]
+      },
+      {
+        "name": "Cost",
+        "type": "DECIMAL",
+        "description": "This column contains the COST detail.",
+        "synonyms": ["Costing"]
+      },
+      {
+        "name": "Units",
+        "type": "DECIMAL",
+        "description": "Units Sold",
+        "synonyms": ["Total Units", "Quantity"]
+      },
+      {
+        "name": "Store",
+        "type": "STRING",
+        "description": "Store ID#",
+        "synonyms": ["StoreID", "STORES", "Store ID", "Store Number"]
+      },
+      {
+        "name": "Store Name",
+        "type": "STRING",
+        "description": "Store Name or Store Description",
+        "synonyms": ["Store Description"]
+      },
+      {
+        "name": "Store State",
+        "type": "STRING",
+        "description": "This column represents the STATE that the Store is located in.",
+        "synonyms": ["States", "State", "Location"]
+      },
+      {
+        "name": "Order Store Location Type",
+        "type": "STRING",
+        "description": "Is this a Store ('ST') or a Warehouse ('WH')",
+        "synonyms": ["Location Type"]
+      },
+      {
+        "name": "Collection",
+        "type": "STRING",
+        "description": "ProductID are grouped into a Collection.",
+        "synonyms": ["Collection Name", "Product Collection", "Collections"]
+      },
+      {
+        "name": "Category ID Code",
+        "type": "STRING",
+        "description": "This is the manufacturing ID code for Retail Category analysis.",
+        "synonyms": ["Retail Category ID Code", "Category Code"]
+      },
+      {
+        "name": "BrandID",
+        "type": "STRING",
+        "description": "This column represents specific categorization within the category. ",
+        "synonyms": ["Brand", "Brand ID"]
+      },
+      {
+        "name": "VoidedReasonCodeID",
+        "type": "STRING",
+        "description": "This column represents voided codes and is used to provide insight on why the order was canceled. An example of a voided code looks like this VoidedReasonCodeID = DCE. DCE stands for Design Consultant Error",
+        "synonyms": [
+          "VoidReasonCode",
+          "VoidCode",
+          "Void Reason Code",
+          "Voided Code",
+          "Void Code",
+          "Void",
+          "Voided"
+        ]
+      },
+      {
+        "name": "Retail Category Description",
+        "type": "STRING",
+        "description": "This column is the Retail Category assigned at the time of the sale. It is used for calculating sales performance across categories when the order is written.",
+        "synonyms": ["Category Description"]
+      },
+      {
+        "name": "Fabric/Finish",
+        "type": "STRING",
+        "description": "Each SKU may include specific identifiers for fabric or finish, which represent the material applied to the product. This information is valuable for analyzing trends, such as which finishes perform well on wood products or which fabrics are driving sales in upholstered items. By capturing and classifying this metadata, we can surface more meaningful insights, support advanced filtering, and enable targeted recommendations based on material performance across categories.",
+        "synonyms": ["Fabrics", "Fabric", "Finish", "Fabric or Finish"]
+      },
+      {
+        "name": "Vendor ID Code",
+        "type": "STRING",
+        "description": "This is the Vendor ID (VendorID) code.",
+        "synonyms": ["Vendor ID"]
+      },
+      {
+        "name": "Customer State",
+        "type": "STRING",
+        "description": "This is the state where the customer lives.",
+        "synonyms": ["State of Customer"]
+      },
+      {
+        "name": "Season",
+        "type": "STRING",
+        "description": "This column represents the overall time of year, such as Winter, Spring, Summer, or Fall. This might give insight into when Customers are looking at particular product. ",
+        "synonyms": ["Weather Timeframe"]
+      },
+      {
+        "name": "CurrentFiscalWeek",
+        "type": "LONG",
+        "description": "This column is a designation that represents the current Fiscal Week that Bassett Furniture is in. It is a rolling field that shows the current fiscal week relative to today's date.\\n",
+        "synonyms": ["Current Fiscal Week"]
+      },
+      {
+        "name": "TransactionFiscalWeek",
+        "type": "LONG",
+        "description": "This is the WRITTEN Fiscal Week within which this Transaction occurred.  WRITEN Fiscal Weeks always run Monday to Sunday. ",
+        "synonyms": [
+          "Transaction Week",
+          "WrittenWeek",
+          "Fiscal Week of Transaction"
+        ]
+      },
+      {
+        "name": "KIT_Component_Flag",
+        "type": "LONG",
+        "description": "This indicates that this item can be grouped with one or more KITS.",
+        "synonyms": ["KIT Component Flag"]
+      },
+      {
+        "name": "WeatherPrecipation",
+        "type": "STRING",
+        "description": "This is a value  that has a determination of any rain, snow, etc that occurred when this transaction took place.",
+        "synonyms": ["Precipitation"]
+      },
+      {
+        "name": "WeatherTemperature",
+        "type": "STRING",
+        "description": "This is a value  that has a determination of the outdoor temperature when this transaction took place.",
+        "synonyms": ["Temperature"]
+      },
+      {
+        "name": "District Manager Region",
+        "type": "STRING",
+        "description": "This is the Geographic Region for a transaction.",
+        "synonyms": ["Region"]
+      },
+      {
+        "name": "Design Consultant",
+        "type": "STRING",
+        "description": "This is the Design Consultant, sometimes called DC or Sales Person. \\nWEB SALES it not a DC, rather that is the B2B website.",
+        "synonyms": ["Sales Person", "DC"]
+      },
+      {
+        "name": "General Manager",
+        "type": "STRING",
+        "description": "This column represents the General Manager, who may be in charge of one or more stores. ",
+        "synonyms": ["Manager"]
+      },
+      {
+        "name": "Identified_KitMembership",
+        "type": "STRING",
+        "description": "This column shows which all of the KITs this item could possibly be grouped with.",
+        "synonyms": ["KIT List", "KIT Membership"]
+      },
+      {
+        "name": "Traffic",
+        "type": "LONG",
+        "description": "This column is the store traffic, or foot traffic that was monitored by the in-store personnel. ",
+        "synonyms": ["Store Traffic", "TrafficCount"]
+      },
+      {
+        "name": "Material Type",
+        "type": "STRING",
+        "description": "Material Type refers to the primary physical substance or surface covering used in the construction or finish of an item. This classification helps identify whether a product is made of, or upholstered with, materials such as leather, fabric, wood, canvas, or other distinct compositions. In the context of furniture or consumer goods, this metadata field enables more accurate filtering, recommendation, and visual recognition within AI-driven systems. By standardizing material types, we ensure consistency across data sources and enhance the system’s ability to group, tag, and analyze products based on their physical characteristics.\\n",
+        "synonyms": ["Composition", "Construction", "Prov", "Surface"]
+      },
+      {
+        "name": "Order Marketing Code",
+        "type": "STRING",
+        "description": "Order Marketing Code - used for Makeover tracking",
+        "synonyms": ["Code for Order Marketing"]
+      },
+      {
+        "name": "Invoice Marketing Code",
+        "type": "STRING",
+        "description": "Invoice Marketing Code - used for Makeover tracking",
+        "synonyms": ["Code for Invoice Marketing"]
+      },
+      {
+        "name": "IsMakeover",
+        "type": "LONG",
+        "description": "This order meets the requirement for being a Makeover.",
+        "synonyms": ["Makeover Order"]
+      },
+      {
+        "name": "Tier",
+        "type": "STRING",
+        "description": "Grades of product are grouped into Tiers which will help determine pricing and premiums.",
+        "synonyms": ["Graded Tier Classification", "Grade"]
+      },
+      {
+        "name": "StoreSqFt",
+        "type": "STRING",
+        "description": "This column represents the available square footage of a store.",
+        "synonyms": ["Square Feet Store Floor", "Square Footage"]
+      },
+      {
+        "name": "Period",
+        "type": "LONG",
+        "description": "Written Transaction Period, also called the Fiscal Month",
+        "synonyms": ["Written Period", "Written Fiscal Period", "WrittenPeriod"]
+      },
+      {
+        "name": "Week of Period",
+        "type": "LONG",
+        "description": "Written Week of the Period in which the Transaction occurred",
+        "synonyms": ["Written Period Week", "Fiscal Period Week"]
+      },
+      {
+        "name": "Quarter",
+        "type": "LONG",
+        "description": "Transaction Written Quarter",
+        "synonyms": ["Written Quarter", "WrittenQuarter"]
+      },
+      {
+        "name": "Year",
+        "type": "LONG",
+        "description": "Written Year of Transaction",
+        "synonyms": ["Written Fiscal Year", "Written Year", "WrittenYear"]
+      },
+      {
+        "name": "CPI Value",
+        "type": "DECIMAL",
+        "description": "This is the Consumer Price Index value.",
+        "synonyms": ["Consumer Price Index value."]
+      },
+      {
+        "name": "CPI Percent",
+        "type": "DECIMAL",
+        "description": "This is the Consumer Price Index change percent from prior period.",
+        "synonyms": ["CPI%", "Consumer Price Index Change"]
+      },
+      {
+        "name": "NHS Value",
+        "type": "DECIMAL",
+        "description": "New Home Sales Reported Value\\n",
+        "synonyms": ["New Home Sales Value"]
+      },
+      {
+        "name": "NHS Percent",
+        "type": "DECIMAL",
+        "description": "New Home Sales Percent change from Prior Period",
+        "synonyms": ["New Home Sales Percent"]
+      },
+      {
+        "name": "EHS Value",
+        "type": "DECIMAL",
+        "description": "Existing Home Sales reported value.",
+        "synonyms": ["Existing Home Sales Value"]
+      },
+      {
+        "name": "EHS Percent",
+        "type": "DECIMAL",
+        "description": "Existing Home Sales percent change from prior period.",
+        "synonyms": ["Existing Home Sales Percent"]
+      },
+      {
+        "name": "M30 Value",
+        "type": "DECIMAL",
+        "description": "30 Year Mortgage Rate reported Value\\n",
+        "synonyms": ["30 Year Mortgage Rate Value"]
+      },
+      {
+        "name": "M30 Percent",
+        "type": "DECIMAL",
+        "description": "30 Year Mortgage Rate Percent change from prior period.",
+        "synonyms": ["30 Year Mortgage Rate Percent"]
+      }
+    ]
+  }
+]

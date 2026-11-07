@@ -1,0 +1,101 @@
+[
+  {
+    "dataSourceId": "13fe300f-3e74-4cdc-b27e-47fe2d7fcc5a",
+    "dataSourceName": "Storis_DwCalendar",
+    "description": "",
+    "columns": [
+      {
+        "name": "CalDate",
+        "type": "DATE",
+        "description": "This is the DAY of the calendar.",
+        "synonyms": ["Date"]
+      },
+      {
+        "name": "WrittenWeekDay",
+        "type": "LONG",
+        "description": "This is the FISCAL DAY within a FISCAL WEEK",
+        "synonyms": ["Written Week Day", "Transaction Week Day"]
+      },
+      {
+        "name": "WrittenWeek",
+        "type": "LONG",
+        "description": "This is the WRITTEN SALES FISCAL WEEK within a WRITTEN SALES FISCAL YEAR.\\nA WRITTEN SALES FISCAL WEEK always runs from MONDAY to SUNDAY. ",
+        "synonyms": ["Transaction Week", "Written Week"]
+      },
+      {
+        "name": "WrittenPeriod",
+        "type": "LONG",
+        "description": "This is the WRITTEN SALES FISCAL PERIOD.",
+        "synonyms": ["Transaction Period", "Written Fiscal Period"]
+      },
+      {
+        "name": "WrittenQuarter",
+        "type": "LONG",
+        "description": "This is the WRITTEN SALES FISCAL QUARTER",
+        "synonyms": ["Transaction Quarter", "Written Fiscal Quarter"]
+      },
+      {
+        "name": "WrittenYear",
+        "type": "LONG",
+        "description": "This is the WRITTEN SALES FISCAL YEAR.",
+        "synonyms": ["Transaction Year", "Written Fiscal Year"]
+      },
+      {
+        "name": "WrittenPeriodDay",
+        "type": "LONG",
+        "description": "This is the WRITTEN SALES FISCAL DAY within the WRITTEN SALES FISCAL PERIOD",
+        "synonyms": ["Written Period Day", "Transaction Period Day"]
+      },
+      {
+        "name": "WrittenPeriodWeek",
+        "type": "LONG",
+        "description": "This is the WRITTEN SALES WEEK within the WRITTEN SALES FISCAL PERIOD. ",
+        "synonyms": ["Transaction Period Week", "Written Period Week"]
+      },
+      {
+        "name": "DeliveredWeekDay",
+        "type": "LONG",
+        "description": "This is the FISCAL DAY within a FISCAL WEEK",
+        "synonyms": ["Delivered Week Day", "Invoice Week Day"]
+      },
+      {
+        "name": "DeliveredWeek",
+        "type": "LONG",
+        "description": "This is the DELIVERED SALES FISCAL WEEK within a DELIVERED SALES FISCAL YEAR. A DELIVERED SALES FISCAL WEEK always runs from SUNDAY to SATURDAY.",
+        "synonyms": ["Delivered Week", "Invoice Week"]
+      },
+      {
+        "name": "DeliveredPeriod",
+        "type": "LONG",
+        "description": "This is the DELIVERED SALES FISCAL PERIOD.",
+        "synonyms": ["Invoice Period", "Delivered Fiscal Period"]
+      },
+      {
+        "name": "DeliveredPeriodWeek",
+        "type": "LONG",
+        "description": "This is the DELIVERED SALES WEEK within the DELIVERED SALES FISCAL PERIOD.",
+        "synonyms": ["Invoice Period Week", "Delivered Period Week"]
+      },
+      {
+        "name": "DeliveredPeriodDay",
+        "type": "LONG",
+        "description": "This is the DELIVERED SALES FISCAL DAY within the DELIVERED SALES FISCAL PERIOD",
+        "synonyms": ["Delivered Period Day", "Invoice Period Day"]
+      },
+      {
+        "name": "DeliveredQuarter",
+        "type": "LONG",
+        "description": "This is the DELIVERED SALES FISCAL QUARTER\\n",
+        "synonyms": ["Invoice Quarter", "Delivered Fiscal Quarter"]
+      },
+      {
+        "name": "DeliveredYear",
+        "type": "LONG",
+        "description": "This is the DELIVERED SALES FISCAL YEAR.",
+        "synonyms": ["Delivered Fiscal Year", "Invoice Year"]
+      }
+    ],
+    "dataDictionaryId": "7171b804-3cfe-41d7-9277-48a2013c0f1d",
+    "dataProviderType": "workbench-odbc"
+  }
+]
